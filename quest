@@ -269,12 +269,12 @@ return w
 end
 
  function questTrash()
- id_Trash={14, 2, 4, 100,3,5,15,2914, 101, 20, 21}
+ id_Trash={14, 2, 4, 100,3,5,15,2914, 101, 20, 21, 10, 11}
     for _,item_id_Trash in pairs(id_Trash) do
 		if getBot():getInventory():findItem(item_id_Trash) ~= 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
 			getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
 			getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
-			sleep(250)
+			sleep(1250)
 		end
 	end
  end
