@@ -1,0 +1,84 @@
+DropOtherWorld_inVend= true
+WorldSaveGrinder = {
+"TZQKOA1998","TZQKOAQWER","TZQKOAPOIU",
+
+}
+loopingFlour = 1
+loopingSugar = 3
+
+WorldSaveVendFlour= "BLOCKTE110Z"
+WorldSaveVendSugar= "BLOCKTE110Z"
+
+goWorldSTART = true
+goWorldSTART_Name = "DLS" 
+ElseWorldSave = "MALISIT" --novend
+
+WorldSaveVendSoil= "THGAHL814"
+WorldSaveVendBlockWarna= "BDJWI1"
+WorldSaveVendDark_block= "FERTILEF"
+
+
+World_WheatUpLevel = {
+"RLRKWV",
+"LFTSRP",
+"OVCQF",
+"TVTUTSE",
+"QAZQK",
+"SMLQF",
+"NKZQR",
+"NKZQJ",
+"SQGQJ",
+"MVHIB",
+"KHQXW",
+"HFPJF",
+"XHWQK",
+"VFDDE",
+"ZUPXLHN"
+} -- world wheat 
+
+World_save_Pack = {"UEUWIHXJJZQ","NOPHAJHJWN","NFJI","WQQC","UEUWIHXJJZW",
+"XLISTWAR","26aprssp1","20meissp",
+
+}
+
+-- "QDHQ",
+
+DropOtherWorld_inVend= true
+WorldSaveGrinder = {
+"TZQKOA1998","TZQKOAQWER","TZQKOAPOIU",
+
+}
+loopingFlour = 1
+loopingSugar = 3
+
+WorldSaveVendFlour= "BLOCKTE110Z"
+WorldSaveVendSugar= "BLOCKTE110Z"
+
+goWorldSTART = true
+goWorldSTART_Name = "DLS" 
+ElseWorldSave = "MALISIT" --novend
+
+WorldSaveVendSoil= "THGAHL814"
+WorldSaveVendBlockWarna= "BDJWI1"
+WorldSaveVendDark_block= "FERTILEF"
+
+--[SaveBotLevel]--
+SaveBotLevel = 15
+GiveRate = false 
+randomWorld = 5
+Add_VendingDropSeed = false
+typeLevelingGuest = false -- true jika mau save guest level 10 only
+
+
+--[trash]--
+id_Trash= {2,3,4,5, 5028,5038,5040,8846, 8694,8695}
+
+--[auto buy pack]--
+JenisPack = "ssp_10_pack"
+count_save_gems= 15000
+HargaPack = 1000
+
+--[proxy data]--
+proxy_data = {
+"p.webshare.io:80:pxlvnimr-rotate:73lini3pgwv6"
+}
