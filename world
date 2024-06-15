@@ -1,1 +1,258 @@
 -- [world list] --
+if SoilFarm == 1 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"QAZPF","WSXTQ",  -- [1] --
+		"SMLWC","SMLWV",
+		"SMLWI","NKZQT",
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+"02INOCSD6W|6DSIN",
+"V3CBL0FQW1|S2RVJ",
+"HVHB2K99SA|N03DC",
+"2WLJV97SYG|H145W",
+"CETN21AZO7|Q3IAM",
+"B4E53EOEMD|7USSW",
+"NIZPN03B1Y|T6NFT",
+"A19Y943HI7|8RMZG",
+"GHE3LPY0L|b15m1ll4h",
+"IQZPZS0MJ|b15m1ll4h",
+"ONNOC8MLI|b15m1ll4h",
+"A56UM3CT7|b15m1ll4h",
+"GMDLFZKTE|b15m1ll4h",
+"E44OP63AD|b15m1ll4h",
+"FACQ3P3XI|b15m1ll4h",
+	}
+  end
+elseif SoilFarm == 2 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"BEKRV","SMLQC",   -- [2] --
+		"SMLQR","SMLQY",
+		"QAZQN","SMLWX",
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+		"XGCPH","ZIJME","SPSZM","WTVQH","BCVCQ",
+		"VCCBM","NEAWN09KBA","ENTER19APR","bott2912ftugui0","BOTT2912FTUGUI1",
+		"1rWwsu409876","DQ3OB6KMT","UWPUKBSUI","EWACJQSAD","IRCO5LAXV","NW5BDRWD2",
+	}
+  end
+elseif SoilFarm == 3 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"GXVIFX","DMMHERA",   -- [3] --
+		"EJHPPE","ROTWK",
+		"ROTWF","ywoEC",
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+		"0XQK5AZY1","DBPCNWNHT","TJHAYSMI9","ENINHJEBN","SFZRIK2FQ",
+		"4NWDVUORQ",
+
+"GHE3LPY0L",
+"IQZPZS0MJ",
+"ONNOC8MLI",
+"A56UM3CT7",
+"GMDLFZKTE",
+"E44OP63AD",
+"FACQ3P3XI",
+		"XGCPH","ZIJME","SPSZM","WTVQH","BCVCQ",
+		"VCCBM","NEAWN09KBA","ENTER19APR","bott2912ftugui0","BOTT2912FTUGUI1",
+		"1rWwsu409876","DQ3OB6KMT","UWPUKBSUI","EWACJQSAD","IRCO5LAXV","NW5BDRWD2",
+	}
+  end
+elseif SoilFarm == 4 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"FZOVOE","OQQMOF",  -- [4] --
+		"AXBWSF","VUVSDJ",
+		"BIJTCT","ORKCSH",
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+
+"GHE3LPY0L",
+"IQZPZS0MJ",
+"ONNOC8MLI",
+"A56UM3CT7",
+"GMDLFZKTE",
+"E44OP63AD",
+"FACQ3P3XI",
+		"XGCPH","ZIJME","SPSZM","WTVQH","BCVCQ",
+		"VCCBM","NEAWN09KBA","ENTER19APR","bott2912ftugui0","BOTT2912FTUGUI1",
+		"1rWwsu409876","DQ3OB6KMT","UWPUKBSUI","EWACJQSAD","IRCO5LAXV","NW5BDRWD2",
+	}
+  end
+elseif SoilFarm == 5 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"IBUCAXC","IBEQUQO", -- [5] --
+		"CRCUONT","WSXTD",
+		"WSXTJ","ROTWC",
+		"VABZRU","YCLEOV"
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+		"VCCBM","NEAWN09KBA","ENTER19APR","bott2912ftugui0","BOTT2912FTUGUI1",
+		"1rWwsu409876","DQ3OB6KMT","UWPUKBSUI","EWACJQSAD","IRCO5LAXV","NW5BDRWD2",
+	}
+  end
+elseif SoilFarm == 6 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"GJVEM","KCXKU",  -- [6] --
+		"XGTMVH","QPPXDF",
+		"ATDYZB","ASXDGN",
+		"AHNGGS","WTGOYF"
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+"GHE3LPY0L",
+"IQZPZS0MJ",
+"ONNOC8MLI",
+"A56UM3CT7",
+"GMDLFZKTE",
+"E44OP63AD",
+"FACQ3P3XI",
+		"XGCPH","ZIJME","SPSZM","WTVQH","BCVCQ",
+		"VCCBM","NEAWN09KBA","ENTER19APR","bott2912ftugui0","BOTT2912FTUGUI1",
+		"1rWwsu409876","DQ3OB6KMT","UWPUKBSUI","EWACJQSAD","IRCO5LAXV","NW5BDRWD2",
+	}
+  end
+elseif SoilFarm == 7 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"QAZGE","QAZYA",  -- [7] --
+		"QAZYF","NZZKAU",
+		"FNSGSV","PNKYEC"
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+"GHE3LPY0L",
+"IQZPZS0MJ",
+"ONNOC8MLI",
+"A56UM3CT7",
+"GMDLFZKTE",
+"E44OP63AD",
+"FACQ3P3XI",
+		"XGCPH","ZIJME","SPSZM","WTVQH","BCVCQ",
+		"VCCBM","NEAWN09KBA","ENTER19APR","bott2912ftugui0","BOTT2912FTUGUI1",
+		"1rWwsu409876","DQ3OB6KMT","UWPUKBSUI","EWACJQSAD","IRCO5LAXV","NW5BDRWD2",
+	}
+  end
+elseif SoilFarm == 8 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"XINOBX","DEJYMG", -- [8] --
+		"XDCQY","XWRQO",
+		"WSXTI","ZLFCM",
+		"UNQJN","RYROB"
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+		"",
+	}
+  end
+elseif SoilFarm == 9 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"CQLJZ","PDRLW", -- [9] --
+		"IZSSQ","GXBUJ",
+		"BFPYD","BEKTL",
+		"XWRQR","WVKZOZZB"
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+		"",
+	}
+  end
+elseif SoilFarm == 10 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"VSAIIY","DHCST", -- [10] --
+		"UJNQI","QPBMR",
+		"BZDUB","QTOCC",
+		"MSZPJ","PRWVR"
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+		"",
+	}
+  end
+elseif SoilFarm == 11 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"8GZGSSXZCRESH92","YN9ORWYOVTY", -- [11] --
+		"O0SDG32GONO1ZJ","LL1P5GVIM",
+		"K0FPXHJ6660J","02IFMNVTDKEU",
+		"8QK3T859SH","XEWUVPP0FT",
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+		"",
+	}
+  end
+elseif SoilFarm == 12 then
+  if itemID_seed == 955 then
+	worldHOME = {
+		"XLIZV","XLGEU",
+		"QAZGK","QAZGN",
+		"VYSJPR","LIXUGZ",
+		"NABURY","KEEVOB",
+	}
+	elseif itemID_seed == 8773 then
+		worldHOME = {
+		"PDRPBJ","GMUXT","OXHUWG",
+	}	
+	elseif itemID_seed == 4585 then
+		worldHOME = {
+		"",
+	}
+  end
+end
