@@ -1,8 +1,16 @@
+--[SaveBotLevel]--
+SaveBotLevel = 12
+GiveRate = false 
+randomWorld = 5
+typeLevelingGuest = false -- true jika mau save guest level 10 only
+
 DropOtherWorld_inVend= true
 WorldSaveGrinder = {
 "TZQKOA1998","TZQKOAQWER","TZQKOAPOIU",
 
 }
+
+Add_VendingDropSeed = false
 loopingFlour = 1
 loopingSugar = 3
 
@@ -42,33 +50,6 @@ World_save_Pack = {"UEUWIHXJJZQ","NOPHAJHJWN","NFJI","WQQC","UEUWIHXJJZW",
 }
 
 -- "QDHQ",
-
-DropOtherWorld_inVend= true
-WorldSaveGrinder = {
-"TZQKOA1998","TZQKOAQWER","TZQKOAPOIU",
-
-}
-loopingFlour = 1
-loopingSugar = 3
-
-WorldSaveVendFlour= "BLOCKTE110Z"
-WorldSaveVendSugar= "BLOCKTE110Z"
-
-goWorldSTART = true
-goWorldSTART_Name = "DLS" 
-ElseWorldSave = "MALISIT" --novend
-
-WorldSaveVendSoil= "THGAHL814"
-WorldSaveVendBlockWarna= "BDJWI1"
-WorldSaveVendDark_block= "FERTILEF"
-
---[SaveBotLevel]--
-SaveBotLevel = 15
-GiveRate = false 
-randomWorld = 5
-Add_VendingDropSeed = false
-typeLevelingGuest = false -- true jika mau save guest level 10 only
-
 
 --[trash]--
 id_Trash= {2,3,4,5, 5028,5038,5040,8846, 8694,8695}
