@@ -140,9 +140,14 @@ end
 function quest_go_find(id) -- find floating
 for _, obj in pairs(getBot():getWorld():getObjects()) do
   if obj.id == id and getBot().status == BotStatus.online then
-	print(getBot().name.." quest_go_find : "..getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg)
+	-- print(getBot().name.." quest_go_find : "..getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg)
+	if getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg == 2 then
+    getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32)-1)
+	sleep(250)
+	else
     getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32))
 	sleep(250)
+	end
     getBot():collectObject(obj.oid,3)
     sleep(500)
 	ulangFind=ulangFind+1
