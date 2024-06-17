@@ -1,8 +1,33 @@
 -- [quest new bot] --
+clearConsole()
 world_bahanQuest = "malisit"
 getBot().auto_trash = false
 getBot().auto_collect = false
  
+ os.remove("questHook.txt")
+ function save(text, xfolder)
+file = io.open(xfolder..".txt", "a")
+file:write(text.."\n")
+file:close()
+end
+ 
+ addEvent(Event.variantlist, function(variant, netid)
+	if variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("That world is inaccessible.") then 
+	print("That world is inaccessible.")
+	inaccessible_World=true
+	elseif variant:get(0):getString() == "OnTalkBubble" and variant:get(2):getString():find("You need to be Level") then 
+		while math.floor(getBot():getWorld():getLocal().posx // 32) ~= 48 and getBot():getWorld().name:upper():find("TUTORIAL_2_") do
+			getBot():findPath(48, math.floor(getBot():getWorld():getLocal().posy // 32))
+			sleep(250)
+		end
+	elseif variant:get(0):getString() == "OnFtueButtonDataSet" and variant:get(4):getString():find("Pick a new quest|Use the page icon to continue learning.") then 
+	print("Pick a new quest|Use the page icon to continue learning.")
+	Pick_a_new_quest = true
+	-- else
+	-- save(variant:get(0):getString().."\n1."..variant:get(1):getString().."\n2."..variant:get(2):getString().."\n23."..variant:get(3):getString().."\n4."..variant:get(4):getString().."\n5."..variant:get(5):getString().."\n\n"  ,"questHook")
+	end
+end)
+
 function quest_harvest(id)
   for _, tile in pairs(getBot():getWorld():getTiles()) do
     if tile.fg == id and getTile(tile.x,tile.y):canHarvest() and getBot().status == BotStatus.online then
@@ -116,13 +141,8 @@ function quest_go_find(id) -- find floating
 for _, obj in pairs(getBot():getWorld():getObjects()) do
   if obj.id == id and getBot().status == BotStatus.online then
 	print(getBot().name.." quest_go_find : "..getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg)
-	if getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg == 2 then
-	  getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32)-1)
-	  sleep(250)
-	else
-      getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32))
-	  sleep(250)
-	end
+    getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32))
+	sleep(250)
     getBot():collectObject(obj.oid,3)
     sleep(500)
 	ulangFind=ulangFind+1
@@ -422,7 +442,7 @@ sleep(math.random(250, 500))
 end
 if getBot():getInventory():findItem(101) ~= 0 then
 getBot():drop(101, getBot():getInventory():findItem(101))
-sleep(250)
+listenEvents(0,5)
 end
 ulangFind=0
 quest_go_find(101)
@@ -452,25 +472,28 @@ end
 print(getBot().name.." otw_wear")
 while getBot():getInventory():findItem(370) >= 1 and wear_itemQuest() == 0 do
 getBot():wear(370)
-sleep(math.random(550, 1500))
+save("wear jean", "questHook")
+listenEvents(2)
 end
 if getBot():getInventory():findItem(370) >= 1 then
 getBot():say("/respawn")
 sleep(2500)
+save("OTW DONE QUEST", "questHook")
 getBot().auto_collect = false
 getBot():sendPacket(2, "action|tutorialTaskPhoneClicked")
-sleep(2500)
+listenEvents(2)
+save("OTW DONE QUEST 1", "questHook")
 getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|12345|\nremote|1|\nbuttonClicked|chc1")
-sleep(4000)
+listenEvents(4)
+save("OTW DONE QUEST 2", "questHook")
 getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|-12|\nremote|1|\nbuttonClicked|back")
-sleep(4500)
+listenEvents(4)
 end
-print(getBot().name.." done wear 1")
+
 if fristMyWorldLock() == 0 then
 findTrees(202)
 quest_Join_World(world_bahanQuest)
 quest_stuck()
-print(getBot().name.." done wear 2")
 ulangFind=0
 getBot():findPath(98,2)
 sleep(2000)
@@ -478,7 +501,5 @@ dropAll(0)
 end
 questTrash()
 end
-
 step1()
 step2()
-print(getBot().name.." done")
