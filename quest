@@ -23,8 +23,9 @@ end
 	elseif variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("Check your Goals by calling Crazy Jim") then 
 	print("Check your Goals by calling Crazy Jim")
 	Pick_a_new_quest = true
-	-- else
-	-- save(variant:get(0):getString().."\n1."..variant:get(1):getString().."\n2."..variant:get(2):getString().."\n23."..variant:get(3):getString().."\n4."..variant:get(4):getString().."\n5."..variant:get(5):getString().."\n\n"  ,"questHook")
+	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("|low|`wLow``") then
+	getBot():sendPacket(2, "action|dialog_return\ndialog_name|oven\ntilex|"..OvenX.."|\ntiley|".. OvenY .."|\ncookthis|4562|buttonClicked|low\n\ndisplay_timer|0")
+	sleep(1500)
 	end
 end)
 
