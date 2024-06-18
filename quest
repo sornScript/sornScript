@@ -24,8 +24,13 @@ end
 	print("Check your Goals by calling Crazy Jim")
 	Pick_a_new_quest = true
 	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("|low|`wLow``") then
-	getBot():sendPacket(2, "action|dialog_return\ndialog_name|oven\ntilex|"..OvenX.."|\ntiley|".. OvenY .."|\ncookthis|4562|buttonClicked|low\n\ndisplay_timer|0")
-	sleep(1500)
+	ovenLow=true
+	elseif variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("You toss a `2Flour`` into the oven!") then
+	print("You toss a `2Flour`` into the oven!")
+	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit Sign``") then 
+	getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
+	sleep(5000)
+	print("wrench sign end")
 	end
 end)
 
@@ -70,8 +75,8 @@ function findTrees(id)
 		sleep(2500)
 		quest_pukul(0,1)
 		else
-		getBot():findPath(tile.x,tile.y)
-		sleep(2500)
+				getBot():findPath(tile.x,tile.y)
+				sleep(2500)
 		end
 	break
 	end
@@ -194,7 +199,7 @@ while getTile(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floo
 end
 end
 function tungguReadyHarvest()
-while getBot().status == BotStatus.online do
+while getBot().status == BotStatus.online and getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg ~= 0 do
 sleep(5000)
 	if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)):canHarvest() then
 	break
@@ -397,14 +402,15 @@ end
  quest_go_find(20)
  getBot():findPath(2,2)
  sleep(2000)
- print(getBot().name.." sign : "..getBot():getInventory():findItem(20))
  quest_put(0,0,20)
+ print("wrench sign")
+ getBot():say("/cheer")
+ sleep(5000)
  if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 20 then
  getBot():wrench(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32))
- sleep(2500)
- getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
- sleep(3000)
+ listenEvents(3)
  end
+ 
  ulangFind=0
  xdropx(3)
  quest_go_find(3)
@@ -446,6 +452,20 @@ quest_put(0,-1,100)
 getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)+1, math.floor(getBot():getWorld():getLocal().posy // 32))
 sleep(math.random(250, 500))
 end
+
+ ulangFind=0
+ xdropx(3)
+ quest_go_find(3)
+ print(getBot().name.." dirt : "..getBot():getInventory():findItem(3))
+ while getBot():getInventory():findItem(3) <= 4 and getBot().status == BotStatus.online do
+ findBlock(2)
+if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
+ otw_block(2, 5)
+ ulangFind=0
+ quest_go_find(3)
+ print(getBot().name.." dirt : "..getBot():getInventory():findItem(3))
+ end
+
 if getBot():getInventory():findItem(101) ~= 0 then
 getBot():drop(101, getBot():getInventory():findItem(101))
 listenEvents(0,5)
