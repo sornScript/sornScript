@@ -455,7 +455,7 @@ rockend=0
 while getBot().status == BotStatus.online do
 findBlock(10)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
-otw_block(10, 5)
+otw_block(4, 5)
 rockend=rockend+1
 if rockend > 5 then
 break
