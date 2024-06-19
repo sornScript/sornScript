@@ -27,10 +27,13 @@ end
 	ovenLow=true
 	elseif variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("You toss a `2Flour`` into the oven!") then
 	print("You toss a `2Flour`` into the oven!")
-	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit Sign``") then 
-	getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
-	sleep(5000)
-	print("wrench sign end")
+	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit Sign``") then
+		if sign_end then
+			getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
+			sleep(5000)
+			print("wrench sign end")
+			sign_end=false
+		end
 	end
 end)
 
@@ -414,6 +417,7 @@ end
  sleep(2000)
  quest_put(0,0,20)
  print("wrench sign")
+ sign_end=true
  getBot():say("/cheer")
  sleep(5000)
  if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 20 then
