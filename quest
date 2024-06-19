@@ -27,11 +27,11 @@ end
 	ovenLow=true
 	elseif variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("You toss a `2Flour`` into the oven!") then
 	print("You toss a `2Flour`` into the oven!")
-	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit Sign``") then
+	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit Sign``") and sign_end then
 		if sign_end then
 			getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
 			sleep(5000)
-			print("wrench sign end")
+			print(getBot().name.." wrench sign end")
 			sign_end=false
 		end
 	end
@@ -339,7 +339,7 @@ contR=0
 end
 
 function step1()
-	if getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock() == 1 then --and quest_total_ready_harvest() > 0 then
+	if getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock() == 1 and quest_total_ready_harvest() > 0 then
 	print(getBot().name.." World frist world lock : "..quest_total_ready_harvest())
 	quest_harvest(3)
 	quest_harvest(5)
@@ -383,7 +383,6 @@ function xdropx(id)
 end
 
 function step2()
--- getBot().auto_collect = true
 breakDirt(0)
 ulangFind=0
 quest_go_find(3)
@@ -394,10 +393,10 @@ ulangFind=0
 xdropx(11)
 quest_go_find(11)
 print(getBot().name.." rock : "..getBot():getInventory():findItem(11))
-while getBot():getInventory():findItem(11) <= 2 and getBot().status == BotStatus.online do
+while getBot():getInventory():findItem(11) <=1 and getBot().status == BotStatus.online do
 findBlock(10)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
-otw_block(10, 3)
+otw_block(10, 2)
 ulangFind=0
 quest_go_find(11)
 print(getBot().name.." rock : "..getBot():getInventory():findItem(11))
@@ -416,7 +415,7 @@ end
  getBot():findPath(2,2)
  sleep(2000)
  quest_put(0,0,20)
- print("wrench sign")
+ print(getBot().name.." wrench sign")
  sign_end=true
  getBot():say("/cheer")
  sleep(5000)
@@ -526,9 +525,9 @@ listenEvents(2)
 save("OTW DONE QUEST 1", "questHook")
 getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|12345|\nremote|1|\nbuttonClicked|chc1")
 listenEvents(4)
--- save("OTW DONE QUEST 2", "questHook")
--- getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|-12|\nremote|1|\nbuttonClicked|back")
--- listenEvents(4)
+save("OTW DONE QUEST 2", "questHook")
+getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|-12|\nremote|1|\nbuttonClicked|back")
+listenEvents(4)
 end
 if fristMyWorldLock() == 0 then
 findTrees(202)
@@ -540,5 +539,6 @@ sleep(2000)
 dropAll(0)
 end
 end
+print(getBot().name.." 19 JUN quest")
 step1()
 step2()
