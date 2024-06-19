@@ -396,7 +396,7 @@ findBlock(10)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
 otw_block(10, 5)
 rockend=rockend+1
-if rockend > 5 the
+if rockend > 5 then
 break
 end
 end
@@ -457,7 +457,7 @@ findBlock(10)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
 otw_block(10, 5)
 rockend=rockend+1
-if rockend > 5 the
+if rockend > 5 then
 break
 end
 end
@@ -565,6 +565,6 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.." 19 JUN questV1")
+print(getBot().name.." 19 JUN questV2")
 step1()
 step2()
