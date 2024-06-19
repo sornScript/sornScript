@@ -19,7 +19,7 @@ WorldSaveVendSugar= "BLOCKTE110Z"
 
 goWorldSTART = true
 goWorldSTART_Name = "DLS" 
-ElseWorldSave = "MALISIT" --novend
+ElseWorldSave = "RNDONATE693" --novend
 
 WorldSaveVendSoil= "THGAHL814"
 WorldSaveVendBlockWarna= "BDJWI1"
