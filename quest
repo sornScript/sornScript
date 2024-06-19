@@ -331,7 +331,7 @@ end
 function quest_total_ready_harvest()
 contR=0
   for _, tile in pairs(getBot():getWorld():getTiles()) do
-    if (tile.fg == 3 or tile.fg == 5 or tile.fg == 11 or tile.fg == 15)and getTile(tile.x,tile.y):canHarvest() and getBot().status == BotStatus.online then
+    if (tile.fg == 3 or tile.fg == 5 or tile.fg == 11 or tile.fg == 15) and getTile(tile.x,tile.y):canHarvest() and getBot().status == BotStatus.online then
 	contR=contR+1
 	end
   end
@@ -339,7 +339,7 @@ contR=0
 end
 
 function step1()
-	if getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock() == 1 and quest_total_ready_harvest() > 0 then
+	if getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock() == 1 then --and quest_total_ready_harvest() > 0 then
 	print(getBot().name.." World frist world lock : "..quest_total_ready_harvest())
 	quest_harvest(3)
 	quest_harvest(5)
