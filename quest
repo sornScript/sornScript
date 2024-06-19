@@ -501,6 +501,7 @@ getBot():wear(370)
 save("wear jean", "questHook")
 listenEvents(2)
 end
+questTrash()
 if getBot():getInventory():findItem(370) >= 1 then
 getBot():say("/respawn")
 sleep(2500)
@@ -511,11 +512,10 @@ listenEvents(2)
 save("OTW DONE QUEST 1", "questHook")
 getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|12345|\nremote|1|\nbuttonClicked|chc1")
 listenEvents(4)
-save("OTW DONE QUEST 2", "questHook")
-getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|-12|\nremote|1|\nbuttonClicked|back")
-listenEvents(4)
+-- save("OTW DONE QUEST 2", "questHook")
+-- getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|-12|\nremote|1|\nbuttonClicked|back")
+-- listenEvents(4)
 end
-
 if fristMyWorldLock() == 0 then
 findTrees(202)
 quest_Join_World(world_bahanQuest)
@@ -525,7 +525,6 @@ getBot():findPath(98,2)
 sleep(2000)
 dropAll(0)
 end
-questTrash()
 end
 step1()
 step2()
