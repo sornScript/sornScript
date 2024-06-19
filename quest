@@ -468,7 +468,7 @@ if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot
 
 if getBot():getInventory():findItem(101) ~= 0 then
 getBot():drop(101, getBot():getInventory():findItem(101))
-listenEvents(0,5)
+sleep(1100)
 end
 ulangFind=0
 quest_go_find(101)
