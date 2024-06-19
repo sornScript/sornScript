@@ -94,7 +94,7 @@ mulai=0
 	getBot():place(tile.x, tile.y, id)
 	sleep(math.random(70,100)) -- 100
 	mulai=mulai+1
-		if mulai >= 10 or getBot():getInventory():findItem(id) == 0 then
+		if mulai >= 30 or getBot():getInventory():findItem(id) == 0 then
 		findTrees(id)
 		break
 		elseif getBot().status ~= 1 then
@@ -112,7 +112,7 @@ mulai=0
 	getBot():place(tile.x, tile.y, id)
 	sleep(math.random(70,100)) -- 100
 	mulai=mulai+1
-		if mulai >= 10 or getBot():getInventory():findItem(id) == 0 then
+		if mulai >= 30 or getBot():getInventory():findItem(id) == 0 then
 		break
 		elseif getBot().status ~= 1 then
 		print(getBot().name.." plant")
@@ -318,6 +318,17 @@ end
 	end
  end
 
+ function done_trash()
+ id_Trash={2, 20, 2914, 5024, 5028}
+    for _,item_id_Trash in pairs(id_Trash) do
+		if getBot():getInventory():findItem(item_id_Trash) ~= 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
+			getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
+			getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
+			sleep(1250)
+		end
+	end
+ end
+
 function fristMyWorldLock()
 local count = 0
   for _, tile in pairs(getBot():getWorld():getTiles()) do
@@ -389,6 +400,7 @@ quest_go_find(3)
 quest_plant(3)
 tungguReadyHarvest()
 quest_harvest(3)
+done_trash()
 print(getBot().name.." break rock")
 rockend=0
 while getBot().status == BotStatus.online do
@@ -436,7 +448,7 @@ end
  getBot():wrench(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32))
  listenEvents(3)
  end
- 
+ done_trash()
  ulangFind=0
  xdropx(3)
  quest_go_find(3)
@@ -462,7 +474,7 @@ break
 end
 end
 print(getBot().name.." break lava end")
-
+ done_trash()
  xdropx(5)
  ulangFind=0
  quest_go_find(5)
@@ -565,6 +577,6 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.." 19 JUN questV2")
+print(getBot().name.." 19 JUN questV3")
 step1()
 step2()
