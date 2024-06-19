@@ -450,6 +450,19 @@ if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot
  print(getBot().name.." dirt : "..getBot():getInventory():findItem(3))
  end
  
+ print(getBot().name.." break lava")
+rockend=0
+while getBot().status == BotStatus.online do
+findBlock(10)
+if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
+otw_block(10, 5)
+rockend=rockend+1
+if rockend > 5 the
+break
+end
+end
+print(getBot().name.." break lava end")
+
  xdropx(5)
  ulangFind=0
  quest_go_find(5)
