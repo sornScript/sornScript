@@ -465,7 +465,7 @@ if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot
  print(getBot().name.." break lava")
 rockend=0
 while getBot().status == BotStatus.online do
-findBlock(10)
+findBlock(4)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
 otw_block(4, 5)
 rockend=rockend+1
@@ -474,6 +474,7 @@ break
 end
 end
 print(getBot().name.." break lava end")
+
  done_trash()
  xdropx(5)
  ulangFind=0
@@ -577,6 +578,6 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.." 19 JUN questV3")
+print(getBot().name.." 20 JUN questV4")
 step1()
 step2()
