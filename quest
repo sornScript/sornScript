@@ -393,15 +393,16 @@ print(getBot().name.." break rock")
 findBlock(10)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
 otw_block(10, 2)
+print(getBot().name.." break rock end")
 
 ulangFind=0
 xdropx(11)
 quest_go_find(11)
 print(getBot().name.." rock : "..getBot():getInventory():findItem(11))
-while getBot():getInventory():findItem(11) <=1 and getBot().status == BotStatus.online do
+while getBot():getInventory():findItem(11) <=2 and getBot().status == BotStatus.online do
 findBlock(10)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
-otw_block(10, 2)
+otw_block(10, 3)
 ulangFind=0
 quest_go_find(11)
 print(getBot().name.." rock : "..getBot():getInventory():findItem(11))
@@ -544,6 +545,6 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.."19 JUN quest")
+print(getBot().name.."19 JUN questV1")
 step1()
 step2()
