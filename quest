@@ -389,6 +389,11 @@ quest_go_find(3)
 quest_plant(3)
 tungguReadyHarvest()
 quest_harvest(3)
+print(getBot().name.." break rock")
+findBlock(10)
+if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
+otw_block(10, 2)
+
 ulangFind=0
 xdropx(11)
 quest_go_find(11)
@@ -539,6 +544,6 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.." 19 JUN quest")
+print(getBot().name.."19 JUN quest")
 step1()
 step2()
