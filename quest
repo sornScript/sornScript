@@ -1,6 +1,6 @@
 -- [quest new bot] --
 clearConsole()
-world_bahanQuest = "malisit"
+world_bahanQuest = "RNDONATE693"
 getBot().auto_trash = false
 getBot().auto_collect = false
  
