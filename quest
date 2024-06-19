@@ -390,9 +390,16 @@ quest_plant(3)
 tungguReadyHarvest()
 quest_harvest(3)
 print(getBot().name.." break rock")
+rockend=0
+while getBot().status == BotStatus.online do
 findBlock(10)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
-otw_block(10, 2)
+otw_block(10, 5)
+rockend=rockend+1
+if rockend > 5 the
+break
+end
+end
 print(getBot().name.." break rock end")
 
 ulangFind=0
@@ -545,6 +552,6 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.."19 JUN questV1")
+print(getBot().name.." 19 JUN questV1")
 step1()
 step2()
