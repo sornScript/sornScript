@@ -1,3 +1,6 @@
+TargetOven=true -- true automatis detect all oven
+SaveBotLevel=12
+
 if SoilFarm == 1 then
 	worldHOME = {
 	"RNQUESTX112233","85TZU6L",
@@ -48,6 +51,6 @@ elseif SoilFarm == 12 then
 	}
 end
 
-TargetOven=true -- true automatis detect all oven
-SaveBotLevel=12
+
+
 
