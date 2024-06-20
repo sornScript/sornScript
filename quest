@@ -21,12 +21,9 @@ end
 			sleep(250)
 		end
 	elseif variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("Check your Goals by calling Crazy Jim") then 
-	print("Check your Goals by calling Crazy Jim")
 	Pick_a_new_quest = true
 	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("|low|`wLow``") then
 	ovenLow=true
-	elseif variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("You toss a `2Flour`` into the oven!") then
-	print("You toss a `2Flour`` into the oven!")
 	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit Sign``") and sign_end then
 		if sign_end then
 			getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
@@ -401,7 +398,17 @@ rockend=0
 	while getBot().status == BotStatus.online do
 	findBlock(id)
 	if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
-	otw_block(id, 200)
+	while getBot().status == BotStatus.online and rockend < 6 do
+		quest_pukul(1,0)
+		getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)+1, math.floor(getBot():getWorld():getLocal().posy // 32))
+		sleep(math.random(250, 500))
+		if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)+1).fg == id then
+		quest_pukul(0,1)
+		rockend=rockend+1
+		getBot():collect(3,3)
+		sleep(math.random(250,1000))
+		end
+	end
 	rockend=rockend+1
 		if rockend > 5 then
 		break
@@ -578,7 +585,8 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.." 21 JUN questV2")
+
+print(getBot().name.." 21 JUN questV3")
 if getBot().level <= 5 then
 step1()
 step2()
@@ -588,10 +596,9 @@ sleep(6000)
 step1()
 step2()
 Pick_a_new_quest=true
-	if Pick_a_new_quest then
-	print(getBot().name.." Pick_a_new_quest DONE true")
-	end
 else
 Pick_a_new_quest=true
 end
-		
+if Pick_a_new_quest then
+	print(getBot().name.." Pick_a_new_quest DONE true")
+end
