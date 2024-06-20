@@ -392,8 +392,8 @@ function xdropx(id)
  -- getBot().auto_collect = true
 end
 
-function breakBlock5(id, nameBlock)
-print(getBot().name.." break "..nameBlock)
+function breakBlock5(id)
+print(getBot().name.." break "..getInfo(id).name)
 rockend=0
 	while getBot().status == BotStatus.online do
 	findBlock(id)
@@ -410,11 +410,12 @@ rockend=0
 		end
 	end
 	rockend=rockend+1
+	print(getBot().name.." | breakBlock5 "..getInfo(id).name.." => "..rockend)
 		if rockend > 5 then
 		break
 		end
 	end
-print(getBot().name.." break "..nameBlock.." end")
+print(getBot().name.." break "..getInfo(id).name.." end")
 end
 
 
@@ -427,7 +428,7 @@ tungguReadyHarvest()
 quest_harvest(3)
 done_trash()
 
-breakBlock5(10, "rock")
+breakBlock5(10)
 
 ulangFind=0
 xdropx(11)
@@ -479,7 +480,7 @@ if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot
  print(getBot().name.." dirt : "..getBot():getInventory():findItem(3))
  end
  
- breakBlock5(4, "lava")
+ breakBlock5(4)
  
  done_trash()
  xdropx(5)
