@@ -180,6 +180,7 @@ end
 	end
   end
 end
+
 function otw_block(id, target)
 while getBot().status == BotStatus.online do
 	quest_pukul(1,0)
@@ -189,6 +190,7 @@ while getBot().status == BotStatus.online do
 	break
 	elseif getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)+1).fg == id then
 	quest_pukul(0,1)
+	rockend=rockend+1
 	getBot():collect(3,3)
 	sleep(math.random(250,1000))
 	end
@@ -393,6 +395,22 @@ function xdropx(id)
  -- getBot().auto_collect = true
 end
 
+function breakBlock5(id, nameBlock)
+print(getBot().name.." break "..nameBlock)
+rockend=0
+	while getBot().status == BotStatus.online do
+	findBlock(id)
+	if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
+	otw_block(id, 200)
+	rockend=rockend+1
+		if rockend > 5 then
+		break
+		end
+	end
+print(getBot().name.." break "..nameBlock.." end")
+end
+
+
 function step2()
 breakDirt(0)
 ulangFind=0
@@ -401,18 +419,8 @@ quest_plant(3)
 tungguReadyHarvest()
 quest_harvest(3)
 done_trash()
-print(getBot().name.." break rock")
-rockend=0
-while getBot().status == BotStatus.online do
-findBlock(10)
-if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
-otw_block(10, 5)
-rockend=rockend+1
-if rockend > 5 then
-break
-end
-end
-print(getBot().name.." break rock end")
+
+breakBlock5(10, "rock")
 
 ulangFind=0
 xdropx(11)
@@ -464,19 +472,8 @@ if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot
  print(getBot().name.." dirt : "..getBot():getInventory():findItem(3))
  end
  
- print(getBot().name.." break lava")
-rockend=0
-while getBot().status == BotStatus.online do
-findBlock(4)
-if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then getBot():findPath(0, fossilY)  sleep(math.random(1000, 2500))  end
-otw_block(4, 5)
-rockend=rockend+1
-if rockend > 5 then
-break
-end
-end
-print(getBot().name.." break lava end")
-
+ breakBlock5(4, "lava")
+ 
  done_trash()
  xdropx(5)
  ulangFind=0
@@ -581,7 +578,7 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.." 21 JUN questV1")
+print(getBot().name.." 21 JUN questV2")
 if getBot().level <= 5 then
 step1()
 step2()
