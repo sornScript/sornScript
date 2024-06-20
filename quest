@@ -319,7 +319,7 @@ end
  end
 
  function done_trash()
- id_Trash={2, 20, 2914, 5024, 5028}
+ id_Trash={2, 20, 2914, 5024, 5028, 370}
     for _,item_id_Trash in pairs(id_Trash) do
 		if getBot():getInventory():findItem(item_id_Trash) ~= 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
 			getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
@@ -533,6 +533,7 @@ print(getBot().name.." quest_plant")
 splice(101, 3)
 splice(101, 3)
 findTrees(371)
+done_trash()
 tungguReadyHarvest()
 quest_harvest(371)
 quest_harvest(371)
