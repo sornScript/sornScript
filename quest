@@ -426,6 +426,8 @@ ulangFind=0
 quest_go_find(11)
 print(getBot().name.." rock : "..getBot():getInventory():findItem(11))
 end
+
+ breakDirt(99)
  xdropx(15)
  ulangFind=0
  quest_go_find(15) -- cave bg seed
@@ -578,6 +580,20 @@ sleep(2000)
 dropAll(0)
 end
 end
-print(getBot().name.." 20 JUN questV4")
+print(getBot().name.." 21 JUN questV1")
+if getBot().level <= 5 then
 step1()
 step2()
+elseif Pick_a_new_quest == false and getBot().level < 10 then
+getBot():warp("k6yw")
+sleep(6000)
+step1()
+step2()
+Pick_a_new_quest=true
+	if Pick_a_new_quest then
+	print(getBot().name.." Pick_a_new_quest DONE true")
+	end
+else
+Pick_a_new_quest=true
+end
+		
