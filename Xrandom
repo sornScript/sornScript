@@ -12,7 +12,7 @@ WorldSaveGrinder = {
 
 Add_VendingDropSeed = false
 loopingFlour = 1
-loopingSugar = 3
+loopingSugar = 1
 
 WorldSaveVendFlour= "BLOCKTE110Z"
 WorldSaveVendSugar= "BLOCKTE110Z"
