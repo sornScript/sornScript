@@ -4,6 +4,9 @@ GiveRate = false
 randomWorld = 5
 typeLevelingGuest = false -- true jika mau save guest level 10 only
 
+dropSBlock=true -- true[drop block soil] / false[drop seed soil]
+WorldSaveVendSoil= "THGAHL814"
+
 DropOtherWorld_inVend= true
 WorldSaveGrinder = {
 "TZQKOA1998","TZQKOAQWER","TZQKOAPOIU",
@@ -20,8 +23,6 @@ WorldSaveVendSugar= "BLOCKTE110Z"
 goWorldSTART = true
 goWorldSTART_Name = "DLS" 
 ElseWorldSave = "RNDONATE693" --novend
-
-WorldSaveVendSoil= "THGAHL814"
 WorldSaveVendBlockWarna= "BDJWI1"
 WorldSaveVendDark_block= "FERTILEF"
 
