@@ -4,7 +4,7 @@ GiveRate = false
 randomWorld = 5
 typeLevelingGuest = false -- true jika mau save guest level 10 only
 
-dropSBlock=true -- true[drop block soil] / false[drop seed soil]
+dropSBlock= false -- true[drop block soil] / false[drop seed soil]
 WorldSaveVendSoil= "THGAHL814"
 
 DropOtherWorld_inVend= true
