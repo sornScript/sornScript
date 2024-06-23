@@ -1,4 +1,3 @@
--- [world list] --
 if SoilFarm == 1 then
   if itemID_seed == 955 then
 	worldHOME = {
@@ -8,7 +7,9 @@ if SoilFarm == 1 then
 	}
 	elseif itemID_seed == 8773 then
 		worldHOME = {
-		"GMUXT","OXHUWG",
+		"SQWLKXLCV",
+"WDD7Z6US0",
+"VUBNIPRZF",
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
@@ -38,7 +39,9 @@ elseif SoilFarm == 2 then
 	}
 	elseif itemID_seed == 8773 then
 		worldHOME = {
-		"GMUXT","OXHUWG",
+"SQWLKXLCV",
+"WDD7Z6US0",
+"VUBNIPRZF",
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
