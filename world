@@ -8,8 +8,8 @@ if SoilFarm == 1 then
 	elseif itemID_seed == 8773 then
 		worldHOME = {
 		"SQWLKXLCV",
-"WDD7Z6US0",
-"VUBNIPRZF",
+		"WDD7Z6US0",
+		"VUBNIPRZF","PDRPBJ","GMUXT","OXHUWG",
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
@@ -39,9 +39,8 @@ elseif SoilFarm == 2 then
 	}
 	elseif itemID_seed == 8773 then
 		worldHOME = {
-"SQWLKXLCV",
-"WDD7Z6US0",
-"VUBNIPRZF",
+		"WDD7Z6US0",
+		"VUBNIPRZF","PDRPBJ","GMUXT","OXHUWG",
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
@@ -59,7 +58,7 @@ elseif SoilFarm == 3 then
 	}
 	elseif itemID_seed == 8773 then
 		worldHOME = {
-		"GMUXT","OXHUWG",
+		"VUBNIPRZF","PDRPBJ","GMUXT","OXHUWG",
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
@@ -114,7 +113,7 @@ elseif SoilFarm == 5 then
 	}
 	elseif itemID_seed == 8773 then
 		worldHOME = {
-		"PDRPBJ","GMUXT","OXHUWG",
+		"GMUXT","OXHUWG",
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
@@ -132,7 +131,7 @@ elseif SoilFarm == 6 then
 	}
 	elseif itemID_seed == 8773 then
 		worldHOME = {
-		"PDRPBJ","GMUXT","OXHUWG",
+		"OXHUWG",
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
