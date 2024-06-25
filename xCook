@@ -1,5 +1,5 @@
 TargetOven=true -- true automatis detect all oven
-SaveBotLevel=12
+SaveBotLevel=15
 
 if SoilFarm == 1 then
 	worldHOME = {
