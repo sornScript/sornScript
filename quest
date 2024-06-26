@@ -97,7 +97,7 @@ end
 function quest_plant(id)
 mulai=0
   for _, tile in pairs(getBot():getWorld():getTiles()) do
-	if tile.fg == 0 and getTile(tile.x,tile.y+1).fg ~= 0 and getTile(tile.x,tile.y+1).fg ~= 6 and getBot().status == BotStatus.online then
+	if tile.fg == 0 and getTile(tile.x,tile.y+1).fg ~= 0 and  getInfo(getTile(tile.x, tile.y+1).fg).collision_type == 1  and getTile(tile.x,tile.y+1).fg ~= 6 and getBot().status == BotStatus.online then
 	getBot():findPath(tile.x,tile.y)
 	getBot():place(tile.x, tile.y, id)
 	sleep(math.random(70,100)) -- 100
@@ -380,10 +380,6 @@ end
 function step1()
 	if (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1) or (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
 	print(getBot().name.." World frist world lock : "..quest_total_ready_harvest())
-	-- quest_harvest(3)
-	-- quest_harvest(5)
-	-- quest_harvest(11)
-	-- quest_harvest(15)
 	quest_harvestALL()
 	else
 	quest_Join_World(world_bahanQuest)
