@@ -42,9 +42,6 @@ function quest_harvest(id)
 	  getBot():hit(tile.x,tile.y)
 	  getBot():collect(3,3)
 	  sleep(math.random(250,1000))
-	  if getBot():getInventory():findItem(id-1) >= 190 then
-	  break
-	  end
 	end
   end
  quest_harvestALL()
@@ -382,8 +379,10 @@ function step1()
 	print(getBot().name.." World frist world lock : "..quest_total_ready_harvest())
 	quest_harvestALL()
 	else
+	getBot().auto_collect = false
 	quest_Join_World(world_bahanQuest)
 	quest_stuck()
+	dropAll(0)
 	ulangFind=0
 	quest_go_find(202)
 	dropS(202, 1)
@@ -462,6 +461,10 @@ ulangFind=0
 quest_go_find(3)
 quest_plant(3)
 tungguReadyHarvest()
+quest_harvest(3)
+quest_harvest(3)
+quest_harvest(3)
+quest_harvest(3)
 quest_harvest(3)
 done_trash()
 
@@ -627,8 +630,8 @@ sleep(6000)
 step1()
 step2()
 Pick_a_new_quest=true
-else
-Pick_a_new_quest=true
+-- else
+-- Pick_a_new_quest=true
 end
 if Pick_a_new_quest then
 	print(getBot().name.." Pick_a_new_quest DONE true")
