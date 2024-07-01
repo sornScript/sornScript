@@ -461,6 +461,7 @@ ulangFind=0
 quest_go_find(3)
 quest_plant(3)
 tungguReadyHarvest()
+sleep(20000)
 quest_harvest(3)
 quest_harvest(3)
 quest_harvest(3)
