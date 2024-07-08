@@ -376,7 +376,7 @@ end
 
 function step1()
 	if (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1) or (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
-	print(getBot().name.." World frist world lock : "..quest_total_ready_harvest())
+	print(getBot().name.." step1 if fristWL: "..fristMyWorldLock(9640).." | SmalLock: "..fristMyWorldLock(202))
 	quest_harvestALL()
 	else
 	getBot().auto_collect = false
@@ -621,7 +621,7 @@ dropAll(0)
 end
 end
 
-print(getBot().name.." 2 JUL questV1")
+print(getBot().name.." 9 JUL questV1")
 if getBot().level <= 5 then
 step1()
 step2()
@@ -630,9 +630,7 @@ elseif Pick_a_new_quest == false and getBot().level < 11 then
   sleep(6000)
   step1()
   step2()
-  if getBot().status == BotStatus.online then  Pick_a_new_quest=true  end
--- else
--- Pick_a_new_quest=true
+  if getBot().status == BotStatus.online and getBot():getInventory():findItem(370) ~= 0 then  Pick_a_new_quest=true  end
 end
 if Pick_a_new_quest then
 	print(getBot().name.." Pick_a_new_quest DONE true")
