@@ -28,6 +28,9 @@ if SoilFarm == 1 then
 "GMDLFZKTE|b15m1ll4h",
 "E44OP63AD|b15m1ll4h",
 "FACQ3P3XI|b15m1ll4h",
+		"XGCPH","ZIJME","SPSZM","WTVQH","BCVCQ",
+		"VCCBM","NEAWN09KBA","ENTER19APR","bott2912ftugui0","BOTT2912FTUGUI1",
+		"1rWwsu409876","DQ3OB6KMT","UWPUKBSUI","EWACJQSAD","IRCO5LAXV","NW5BDRWD2",
 	}
   end
 elseif SoilFarm == 2 then
@@ -316,3 +319,5 @@ elseif SoilFarm == 12 then
 	}
   end
 end
+
+
