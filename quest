@@ -279,7 +279,7 @@ function dropAll(itemID) -- id block
 if getBot().status == BotStatus.online then
 getBot().auto_collect = false
 	for i, item in pairs(getBot():getInventory():getItems()) do
-		if item.id == 370 or item.id == 1510 or item.id == 12498 or item.id == 882 or item.id == 1486 or item.id == 18 or item.id == 32 or item.id == 98 or item.id == itemID or item.id == itemID+1 then
+		if item.id == 9640 or item.id == 370 or item.id == 1510 or item.id == 12498 or item.id == 882 or item.id == 1486 or item.id == 18 or item.id == 32 or item.id == 98 or item.id == itemID or item.id == itemID+1 then
 		else
 			while getBot():getInventory():findItem(item.id) ~= 0 and getBot().status == BotStatus.online do
 				getBot():drop(item.id, getBot():getInventory():findItem(item.id))
@@ -621,7 +621,7 @@ dropAll(0)
 end
 end
 
-print(getBot().name.." 9 JUL questV1")
+print(getBot().name.." 9 JUL questV2")
 if getBot().level <= 5 then
 step1()
 step2()
