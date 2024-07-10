@@ -625,7 +625,7 @@ print(getBot().name.." 9 JUL questV2")
 if getBot().level <= 5 then
 step1()
 step2()
-elseif Pick_a_new_quest == false and getBot().level < 11 then
+elseif Pick_a_new_quest == false and getBot().level < 5 then
   getBot():warp("k6yw")
   sleep(6000)
   step1()
