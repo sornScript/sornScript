@@ -7,6 +7,15 @@ typeLevelingGuest = false -- true jika mau save guest level 10 only
 dropSBlock= false -- true[drop block soil] / false[drop seed soil]
 WorldSaveVendSoil= "THGAHL814"
 
+-- [onlySoil] --
+WorldSaveVendSoil_new = {
+"THGAHL814",
+}
+-- [other] --
+ElseWorldSave_new = {
+"RNDONATE693",
+}
+
 DropOtherWorld_inVend= true
 WorldSaveGrinder = {
 "TZQKOA1998","TZQKOAQWER","TZQKOAPOIU",
