@@ -65,9 +65,9 @@ World_save_Pack = {"UEUWIHXJJZQ","NOPHAJHJWN","NFJI","UEUWIHXJJZW",
 id_Trash= {2,3,4,5, 5028,5038,5040,8846, 8694,8695}
 
 --[auto buy pack]--
-JenisPack = "world_lock" -- "ssp_10_pack"
-count_save_gems= 100000
-HargaPack = 2000
+JenisPack = "summer_pack" --"world_lock" -- "ssp_10_pack"
+count_save_gems= 20000
+HargaPack = 20000
 
 --[proxy data]--
 proxy_data = {
