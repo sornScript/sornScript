@@ -13,7 +13,7 @@ WorldSaveGrinder = {
 
 }
 
-Add_VendingDropSeed = false
+Add_VendingDropSeed = true
 loopingFlour = 1
 loopingSugar = 1
 
