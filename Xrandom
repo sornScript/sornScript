@@ -21,6 +21,11 @@ WorldSaveGrinder = {
 "TZQKOA1998","TZQKOAQWER","TZQKOAPOIU",
 
 }
+-- [item id yang no drop] --
+endNodropid={18, 32, 370, 9640, 98, 8850, 1510, 12498, 882, 1486, 10158
+
+}
+---------------------------
 
 Add_VendingDropSeed = true
 loopingFlour = 1
