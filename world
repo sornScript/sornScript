@@ -83,7 +83,9 @@ elseif SoilFarm == 4 then
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
-		"",
+		"9DRTQP2IN",
+		"XDYCK0IOG8JEUJ", -- soil : 0| dirt : 2781
+		"UWGGGB8QH", -- soil : 0| dirt : 2785
 	}
   end
 elseif SoilFarm == 5 then
