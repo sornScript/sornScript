@@ -381,7 +381,7 @@ contR=0
 end
 
 function step1()
-	if (fristMyWorldLock(9640) == 1) or (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
+	if (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1) or (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
 	print(getBot().name.." step1 if fristWL: "..fristMyWorldLock(9640).." | SmalLock: "..fristMyWorldLock(202))
 	quest_harvestALL()
 	else
@@ -640,7 +640,9 @@ step2()
 if getBot().level <= 5 then
 return tutorialQuestLevel6()
 end
-elseif Pick_a_new_quest == false and getBot().level < 7 then
+elseif Pick_a_new_quest == false and getBot().level < 6 then
+  getBot():warp("START")
+  sleep(7000)
   step1()
   step2()
   if getBot().status == BotStatus.online and getBot():getInventory():findItem(370) ~= 0 and getBot().level >= 6 then  Pick_a_new_quest=true  end
