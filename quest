@@ -640,7 +640,7 @@ step2()
 if getBot().level <= 5 then
 return tutorialQuestLevel6()
 end
-elseif Pick_a_new_quest == false and getBot().level < 7 then
+elseif Pick_a_new_quest == false and getBot().level < 6 then
 getBot():warp("start")
 sleep(7000)
   step1()
