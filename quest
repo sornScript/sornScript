@@ -274,8 +274,8 @@ end
 end
 
 function quest_Join_World(worldRotasi)
-Join_WorldBolean=true
-  while getBot():getWorld().name:upper() ~= worldRotasi:upper() and getBot().status == BotStatus.online and Join_WorldBolean do
+randomWorld_20=true
+  while getBot():getWorld().name:upper() ~= worldRotasi:upper() and getBot().status == BotStatus.online and randomWorld_20 do
 	getBot():warp(worldRotasi, "b15m1ll4h")
 	listenEvents(4,6)
   end
@@ -640,9 +640,7 @@ step2()
 if getBot().level <= 5 then
 return tutorialQuestLevel6()
 end
-elseif Pick_a_new_quest == false and getBot().level < 6 then
-getBot():warp("start")
-sleep(7000)
+elseif Pick_a_new_quest == false and getBot().level < 7 then
   step1()
   step2()
   if getBot().status == BotStatus.online and getBot():getInventory():findItem(370) ~= 0 and getBot().level >= 6 then  Pick_a_new_quest=true  end
