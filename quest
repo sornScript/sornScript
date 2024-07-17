@@ -1,6 +1,9 @@
 -- [quest new bot] --
 clearConsole()
 world_bahanQuest = "RNDONATE693"
+world_Try_again_tomorrow ={"RNDONATE741",
+"118DJJSKWOWP0A","3362728MM","01927337HSHSJ",
+}
 getBot().auto_trash = false
 getBot().auto_collect = false
  
@@ -12,7 +15,10 @@ file:close()
 end
  
  addEvent(Event.variantlist, function(variant, netid)
-	if variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("That world is inaccessible.") then 
+  	if variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("Oops, you've created too many worlds today.  Try again tomorrow!") then
+	print("Oops, you've created too many worlds today.  Try again tomorrow!")
+	randomWorld_20=false
+	elseif variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("That world is inaccessible.") then 
 	print("That world is inaccessible.")
 	inaccessible_World=true
 	elseif variant:get(0):getString() == "OnTalkBubble" and variant:get(2):getString():find("You need to be Level") then 
@@ -375,7 +381,7 @@ contR=0
 end
 
 function step1()
-	if (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1) or (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
+	if (fristMyWorldLock(9640) == 1) or (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
 	print(getBot().name.." step1 if fristWL: "..fristMyWorldLock(9640).." | SmalLock: "..fristMyWorldLock(202))
 	quest_harvestALL()
 	else
@@ -404,9 +410,14 @@ function step1()
 	dropS(3, 30)
 	returnHiddenDoor()
 	quest_Join_World(quest_iniRid(12))
+	if randomWorld_20 == false then
+	quest_Join_World(world_Try_again_tomorrow[math.random(1, #world_Try_again_tomorrow)])
+	quest_stuck()
+	else
 	quest_put(0,-1,202)
 	quest_put(1,0,5036)
 	quest_put(-1,0,5036)
+	end
 	end
 end
 function xdropx(id)
@@ -610,7 +621,7 @@ listenEvents(4)
 getBot():sendPacket(2, "action|dialog_return\ndialog_name|phonecall\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nnum|-12|\nremote|1|\nbuttonClicked|back")
 listenEvents(4)
 end
-if fristMyWorldLock(9640) == 0 then
+if fristMyWorldLock(9640) == 0 and randomWorld_20 then
 findTrees(202)
 quest_Join_World(world_bahanQuest)
 quest_stuck()
@@ -621,17 +632,22 @@ dropAll(0)
 end
 end
 
-print(getBot().name.." 9 JUL questV2")
+print(getBot().name.." 17 JUL questV1")
+function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
 step2()
-elseif Pick_a_new_quest == false and getBot().level < 6 then
-  getBot():warp("k6yw")
-  sleep(6000)
+if getBot().level <= 5 then
+return tutorialQuestLevel6()
+end
+elseif Pick_a_new_quest == false and getBot().level < 11 then
   step1()
   step2()
-  if getBot().status == BotStatus.online and getBot():getInventory():findItem(370) ~= 0 then  Pick_a_new_quest=true  end
+  if getBot().status == BotStatus.online and getBot():getInventory():findItem(370) ~= 0 and getBot().level >= 6 then  Pick_a_new_quest=true  end
 end
 if Pick_a_new_quest then
 	print(getBot().name.." Pick_a_new_quest DONE true")
 end
+
+end
+tutorialQuestLevel6()
