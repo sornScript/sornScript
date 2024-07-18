@@ -281,7 +281,7 @@ randomWorld_20=true
   end
 end
 
-function dropAll(itemID) -- id block
+function quest_dropAll(itemID) -- id block
 if getBot().status == BotStatus.online then
 getBot().auto_collect = false
 	for i, item in pairs(getBot():getInventory():getItems()) do
@@ -388,7 +388,7 @@ function step1()
 	getBot().auto_collect = false
 	quest_Join_World(world_bahanQuest)
 	quest_stuck()
-	dropAll(0)
+	quest_dropAll(0)
 	ulangFind=0
 	quest_go_find(202)
 	dropS(202, 1)
@@ -628,7 +628,7 @@ quest_stuck()
 ulangFind=0
 getBot():findPath(98,2)
 sleep(250)
-dropAll(0)
+quest_dropAll(0)
 end
 end
 
