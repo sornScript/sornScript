@@ -67,7 +67,9 @@ World_save_Pack = {"UEUWIHXJJZQ","NOPHAJHJWN","NFJI","UEUWIHXJJZW",
 -- "QDHQ", WQQC
 
 --[trash]--
-id_Trash= {2,3,4,5, 5028,5038,5040,8846, 8694,8695}
+id_Trash= {2,3,4,5,14,15, 5028, 5038, 5040, 8846, 8694, 8695, 5026, 5024 
+
+}
 
 --[auto buy pack]--
 JenisPack = "summer_pack" --"world_lock" -- "ssp_10_pack"
