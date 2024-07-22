@@ -72,9 +72,9 @@ id_Trash= {2,3,4,5,14,15, 5028, 5038, 5040, 8846, 8694, 8695, 5026, 5024
 }
 
 --[auto buy pack]--
-JenisPack = "summer_pack" --"world_lock" -- "ssp_10_pack"
-count_save_gems= 20000
-HargaPack = 20000
+JenisPack = "world_lock" -- "ssp_10_pack"
+count_save_gems= 10000
+HargaPack = 2000
 
 --[proxy data]--
 proxy_data = {
