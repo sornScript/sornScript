@@ -4,6 +4,9 @@ world_bahanQuest = "RNDONATE693"
 world_Try_again_tomorrow ={"RNDONATE741",
 "118DJJSKWOWP0A","3362728MM","01927337HSHSJ",
 }
+worldPickAxe={
+"PICKAXEBEACH",
+}
 getBot().auto_trash = false
 getBot().auto_collect = false
  
@@ -51,6 +54,20 @@ function quest_harvest(id)
 	end
   end
  quest_harvestALL()
+end
+function quest_harvestPickAxe(id)
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+    if tile.fg == id and getTile(tile.x,tile.y):canHarvest() and getBot().status == BotStatus.online and getBot():getInventory():findItem(id-1) < 1 then
+      getBot():findPath(tile.x,tile.y)
+	  sleep(math.random(250,500))
+	  getBot():hit(tile.x,tile.y)
+	  getBot():collect(3,3)
+	  sleep(math.random(250,1000))
+	  if getBot():getInventory():findItem(id-1) >= 1 then
+	  break
+	  end
+	end
+  end
 end
 
 function quest_harvestALL()
@@ -380,6 +397,17 @@ contR=0
   return contR
 end
 
+function quest_wear_hand()
+countCloth = 0
+if getLocal() then
+  clothes = getLocal().clothes
+  countCloth = clothes.hand
+end
+return countCloth;
+end
+
+
+
 function step1()
 	if (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1) or (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
 	print(getBot().name.." step1 if fristWL: "..fristMyWorldLock(9640).." | SmalLock: "..fristMyWorldLock(202))
@@ -632,7 +660,7 @@ quest_dropAll(0)
 end
 end
 
-print(getBot().name.." 17 JUL questV1")
+print(getBot().name.." 24 JUL questV1")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
@@ -640,7 +668,7 @@ step2()
 if getBot().level <= 5 then
 return tutorialQuestLevel6()
 end
-elseif Pick_a_new_quest == false and getBot().level < 6 then
+elseif Pick_a_new_quest == false and getBot().level < 7 then
   getBot():warp("START")
   sleep(7000)
   step1()
@@ -649,6 +677,22 @@ elseif Pick_a_new_quest == false and getBot().level < 6 then
 end
 if Pick_a_new_quest then
 	print(getBot().name.." Pick_a_new_quest DONE true")
+	if getBot():getInventory():findItem(98) == 0 and quest_wear_hand() ~= 98 then
+	print(getBot().name.." TAKE pickAxe")
+	  getBot():warp(worldPickAxe[math.random(1, #worldPickAxe)],"b15m1ll4h")
+	  sleep(10000)
+	  quest_stuck()
+	  ulangFind=0
+	  quest_go_find(98)
+	  dropS(98, 1)
+	  quest_harvestPickAxe(99)
+		while quest_wear_hand() ~= 98 and getBot():getInventory():findItem(98) >= 1 do
+			getBot():wear(98)
+			sleep(1150)
+		end
+		print(getBot().name.." TAKE pickAxe : "..quest_wear_hand())
+		dropS(98, 1)
+	end
 end
 
 end
