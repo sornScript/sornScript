@@ -28,7 +28,7 @@ price_SpecialEvent = 5000
 itenID_SpecialEvent = 0
 
 -- [item id yang no drop] --
-endNodropid={itenID_SpecialEvent, 18, 32, 9640, 98, 8850, 1510, 12498, 882, 1486, 10158, 6336
+endNodropid={itenID_SpecialEvent, 18, 32, 9640, 98, 8850, 1510, 12498, 1486, 10158, 6336
 
 }
 ---------------------------
