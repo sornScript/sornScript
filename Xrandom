@@ -65,12 +65,12 @@ World_WheatUpLevel = {
 "ZUPXLHN"
 } -- world wheat 
 
-World_save_Pack = {"UEUWIHXJJZQ","NOPHAJHJWN","NFJI","UEUWIHXJJZW",
+World_save_Pack = {"UEUWIHXJJZQ","NOPHAJHJWN","UEUWIHXJJZW",
 "XLISTWAR","26aprssp1","buyperdays",
 
 }
 
--- "QDHQ", WQQC
+-- "QDHQ", WQQC "NFJI",
 
 --[trash]--
 id_Trash= {2,3,4,5,14,15, 5028, 5038, 5040, 8846, 8694, 8695, 5026, 5024 
