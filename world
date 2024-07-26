@@ -118,6 +118,13 @@ elseif SoilFarm == 6 then
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
+		"OEJDWLDLFFTPO0Y","DGINN7S8","I73TBUDDEKRN","FTHCO3BR",
+		
+		"GHPOXJBTXMC","0NV1REK7J",
+		"UWPUKBSUI","EWACJQSAD",
+		"XWRWA","IRCO5LAXV",
+		"EQYYXRRXDYA","H7AFSA2BHGB2V7",
+		"EVW9YL6X","9PMGX1SPJTPIPL9",
 	}
   end
 elseif SoilFarm == 7 then
@@ -134,6 +141,13 @@ elseif SoilFarm == 7 then
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
+		
+
+		"GHPOXJBTXMC","0NV1REK7J",
+		"UWPUKBSUI","EWACJQSAD",
+		"XWRWA","IRCO5LAXV",
+		"EQYYXRRXDYA","H7AFSA2BHGB2V7",
+		"EVW9YL6X","9PMGX1SPJTPIPL9",
 	}
   end
 elseif SoilFarm == 8 then
