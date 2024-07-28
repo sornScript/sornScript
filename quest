@@ -660,7 +660,7 @@ quest_dropAll(0)
 end
 end
 
-print(getBot().name.." 24 JUL questV1")
+print(getBot().name.." 28 JUL questV1")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
@@ -669,8 +669,12 @@ if getBot().level <= 5 then
 return tutorialQuestLevel6()
 end
 elseif Pick_a_new_quest == false and getBot().level < 17 then
+  if (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
+  
+  else
   getBot():warp("START")
   sleep(7000)
+  end
   step1()
   step2()
   if getBot().status == BotStatus.online and getBot():getInventory():findItem(370) ~= 0 and getBot().level >= 6 then  Pick_a_new_quest=true  end
@@ -696,6 +700,5 @@ if Pick_a_new_quest then
 		dropS(98, 1)
 	end
 end
-
 end
 tutorialQuestLevel6()
