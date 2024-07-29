@@ -138,13 +138,8 @@ elseif SoilFarm == 7 then
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
-		
+		"9LZLTEEG4TOZ6","ELFOGENC5FBXY","J24IGT6J6HPMJYZ","GKJYITEYT",
 
-		"GHPOXJBTXMC","0NV1REK7J",
-		"UWPUKBSUI","EWACJQSAD",
-		"XWRWA","IRCO5LAXV",
-		"EQYYXRRXDYA","H7AFSA2BHGB2V7",
-		"EVW9YL6X","9PMGX1SPJTPIPL9",
 	}
   end
 elseif SoilFarm == 8 then
