@@ -13,7 +13,6 @@ WorldSaveVendSoil_new = {
 }
 -- [other] --
 ElseWorldSave_new = {
-"BUYSTOCKBAN",
 "RNDONATE693","RNDONATE741","118DJJSKWOWP0A","3362728MM","01927337HSHSJ",
 
 }
@@ -67,8 +66,9 @@ World_WheatUpLevel = {
 "ZUPXLHN"
 } -- world wheat 
 
-World_save_Pack = {"UEUWIHXJJZQ","NOPHAJHJWN","UEUWIHXJJZW",
-"XLISTWAR","26aprssp1","buyperdays",
+World_save_Pack = {
+"BUYSTOCKBAN",
+"UEUWIHXJJZQ","NOPHAJHJWN","UEUWIHXJJZW","XLISTWAR","26aprssp1","buyperdays",
 
 }
 
