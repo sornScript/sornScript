@@ -162,7 +162,7 @@ elseif SoilFarm == 8 then
 		"qazqc","twarw","qazhq","mekQV","qazgq",
 		"qazrg","qaztq","qaztj","qaztl","qaztb",
 		"rotwj","wsxhf","xwrqn","smlwh","yworq",
-		
+		"ywoRG","ywoRX","xhwQU",
 	}
   end
 elseif SoilFarm == 9 then
@@ -179,7 +179,10 @@ elseif SoilFarm == 9 then
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
-		"",
+		"xhwWX","NKZQY","sqgQV","xhwWB","sqgQP",
+		"sqgQA","DNKVR","ROHZV","URONC","VJTOW",
+		"UBJPB","FCPTD","YZYKK","BBVUG","IBKQM",
+		"MLJLX","XMWQT","NDMVX",
 	}
   end
 elseif SoilFarm == 10 then
@@ -196,7 +199,10 @@ elseif SoilFarm == 10 then
 	}	
 	elseif itemID_seed == 4585 then
 		worldHOME = {
-		"",
+		"IRJJU","PQXOH","VQMUL","RWGYG","OVNLX",
+		"GBFEZ","YXSDD","EQPYQ","UOFTD","JGOCY",
+		"ZQGCF","COJHQ","JJOZE",
+		
 	}
   end
 elseif SoilFarm == 11 then
