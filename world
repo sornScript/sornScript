@@ -201,8 +201,8 @@ elseif SoilFarm == 10 then
 		worldHOME = {
 		"IRJJU","PQXOH","VQMUL","RWGYG","OVNLX",
 		"GBFEZ","YXSDD","EQPYQ","UOFTD","JGOCY",
-		"ZQGCF","COJHQ","JJOZE",
-		
+		"ZQGCF","COJHQ","JJOZE","XWPTW","NIVJV",
+		"SJUTDN","GPRCTO","EYHIGHARC",
 	}
   end
 elseif SoilFarm == 11 then
