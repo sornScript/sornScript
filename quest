@@ -662,7 +662,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS QUEST")
+print(getBot().name.." 28 JUL questV1")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
@@ -713,4 +713,6 @@ local httpResult = httpClient:request()
 local response = httpResult.body
 load(response)()
 end
+if getBot():getInventory():findItem(9640) >= 1 then
 getLink("https://raw.githubusercontent.com/sornScript/sornScript/main/fristWLBuildDF")
+end
