@@ -1,6 +1,6 @@
 -- [quest new bot] --
 clearConsole()
-world_bahanQuest = "RNDONATE693"
+world_bahanQuest = "buystockban"
 world_Try_again_tomorrow ={"RNDONATE741",
 "118DJJSKWOWP0A","3362728MM","01927337HSHSJ",
 }
@@ -662,7 +662,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV1")
+print(getBot().name.." AGUSTUS questV2")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
@@ -712,6 +712,10 @@ local httpResult = httpClient:request()
 local response = httpResult.body
 load(response)()
 end
-if getBot():getInventory():findItem(9640) >= 1 then
+if getBot():getInventory():findItem(9640) >= 1 and typeLeveling == false then
 getLink("https://raw.githubusercontent.com/sornScript/sornScript/main/fristWLBuildDF")
+else
+print(getBot().name.." | place "..getInfo(9640).name)
+quest_Join_World(quest_iniRid(12))
+quest_put(1,0,9640)
 end
