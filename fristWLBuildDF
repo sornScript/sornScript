@@ -161,13 +161,11 @@ block = 7164
 id_Door = "b15m1ll4h"
 Door_id = 12 --886
 small_lock = 202
-world_lock = 242
+world_lock = 9640
 
 function TakeBahan()
 Join_World(world_save)
 stuck()
-go_find(world_lock)
-dropS(world_lock, 21)
 go_find(signal_jammer)
 dropS(signal_jammer,21)
 go_find(small_lock)
@@ -175,7 +173,7 @@ dropS(small_lock,(getBot():getInventory():findItem(world_lock)*2))
 go_find(block)
 dropS(block, (getBot():getInventory():findItem(world_lock)*6))
 go_find(Door_id)
-dropS(Door_id, 21)
+dropS(Door_id, getBot():getInventory():findItem(world_lock))
 end
 
 function setRotasi()
@@ -250,6 +248,3 @@ end
 TakeBahan()
 -- goMain()
 setRotasi()
-Join_World(world_save)
-stuck()
-dropAll(0)
