@@ -210,5 +210,6 @@ function setRotasi()
 		dropS(build_Door_id, 0)
 	end
 end
+print("build dirt farm : "..getBot():getInventory():findItem(9640))
 TakeBahan()
 setRotasi()
