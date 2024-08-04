@@ -96,13 +96,43 @@ function build_pukul(x,y)
 	sleep(200)
 	end
  end
+function ceking_droper()
+    if getBot().status == 1 and getBot():getWorld().name ~= "EXIT" then
+        gs = 0
+        for _, obj in pairs(getBot():getWorld():getObjects()) do
+            if math.floor(getBot():getWorld():getLocal().posx // 32)-countDrop == math.floor(obj.x//32) and math.floor(obj.y//32) == math.floor(getBot():getWorld():getLocal().posy // 32) then
+                gs = gs + obj.count
+				droperX=math.floor(obj.x//32) 
+				droperY=math.floor(obj.y//32)
+            end
+        end
+        return gs
+    end
+end
+function kordinatDrop()
+	countDrop=1
+		while true do
+		-- print(getBot().name.." | "..countDrop.." | "..ceking_droper())
+			if ceking_droper() >= 3500 then
+				countDrop=countDrop+1
+			else
+			-- print(getBot().name.." | "..countDrop.." | break "..ceking_droper())
+				break
+			end
+		end
+	getBot():findPath(droperX, droperY)
+	sleep(500)
+end
 
-function dropS(id, x)
+function build_dropS(id, x)
 if getBot():getInventory():findItem(id) ~= 0 then
 	while getBot():getInventory():findItem(id) > x and getBot().status == BotStatus.online do
 	getBot():drop(id, getBot():getInventory():findItem(id)-x)
 	sleep(1100)
-		if getBot():getInventory():findItem(id) > x then
+		if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 6 then
+		getBot():sendPacket(3, "action|join_request\nname|"..getBot():getWorld().name.."|"..build_id_Door.."\ninvitedWorld|0")
+		sleep(2000)
+		elseif getBot():getInventory():findItem(id) > x then
 		getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)-1, math.floor(getBot():getWorld():getLocal().posy // 32))
 		sleep(math.random(250, 500))
 		end
@@ -149,13 +179,13 @@ function TakeBahan()
 build_Join_World(world_save)
 build_stuck()
 build_go_find(signal_jammer)
-dropS(signal_jammer,getBot():getInventory():findItem(world_lock))
+build_dropS(signal_jammer,getBot():getInventory():findItem(world_lock))
 build_go_find(small_lock)
-dropS(small_lock,(getBot():getInventory():findItem(world_lock)*2))
+build_dropS(small_lock,(getBot():getInventory():findItem(world_lock)*2))
 build_go_find(block)
-dropS(block, (getBot():getInventory():findItem(world_lock)*6))
+build_dropS(block, (getBot():getInventory():findItem(world_lock)*6))
 build_go_find(build_Door_id)
-dropS(build_Door_id, getBot():getInventory():findItem(world_lock))
+build_dropS(build_Door_id, getBot():getInventory():findItem(world_lock))
 end
 
 function setRotasi()
@@ -204,10 +234,12 @@ function setRotasi()
 		-- print("korX:"..korX.."  |korY:"..korY)
 		edit_hl(korX, korY)
 		else
-		dropS(signal_jammer, 0)
-		dropS(small_lock, 0)
-		dropS(block, 0)
-		dropS(build_Door_id, 0)
+		build_stuck()
+		kordinatDrop()
+		build_dropS(signal_jammer, 0)
+		build_dropS(small_lock, 0)
+		build_dropS(block, 0)
+		build_dropS(build_Door_id, 0)
 	end
 end
 print("build dirt farm : "..getBot():getInventory():findItem(9640))
