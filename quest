@@ -662,7 +662,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV5")
+print(getBot().name.." AGUSTUS questV6")
 function tutorialQuestLevel6()
 if getBot().level <= 6 then
 step1()
@@ -712,7 +712,7 @@ load(response)()
 end
 if getBot():getInventory():findItem(9640) >= 1 and typeLeveling == false then
 getLink("https://raw.githubusercontent.com/sornScript/sornScript/main/fristWLBuildDF")
-else
+elseif getBot():getInventory():findItem(9640) >= 1 then
 print(getBot().name.." | place "..getInfo(9640).name)
 quest_Join_World(quest_iniRid(12))
 quest_put(1,0, 9640)
