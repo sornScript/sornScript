@@ -1,0 +1,255 @@
+local function save(x, xfolder)
+local file = io.open(xfolder..".txt", "a+")
+ file:write(x.."\n")
+ file:close()
+end
+getBot().auto_trash = false
+getBot().auto_collect = false
+
+function iniRid(jumlah)
+	local chars = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890"
+	nameBot = ""
+	for i = 1,jumlah do
+	local rint = math.random(1, #chars)
+	nameBot = nameBot..chars:sub(rint, rint)
+	end
+	return nameBot
+end
+
+function Join_World(worldRotasi)
+Join_WorldBolean=true
+  while getBot():getWorld().name:upper() ~= worldRotasi:upper() and getBot().status == BotStatus.online and Join_WorldBolean do
+	getBot():warp(worldRotasi)
+	listenEvents(8)
+  end
+end
+
+function stuck()
+if getBot().status == BotStatus.online then
+	while (getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 6 or getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 6548) do
+	getBot():sendPacket(3, "action|join_request\nname|"..getBot():getWorld().name.."|"..id_Door.."\ninvitedWorld|0")
+	sleep(2000)
+		if getBot():getWorld().name:lower():find("tutorial_2_") then
+		break
+		end
+	end
+end
+end
+
+addEvent(Event.variantlist, function(variant, netid)
+	if variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("has set the `$World Lock`` to `$PUBLIC") then
+	save('"'..getBot():getWorld().name:upper()..'",', "world_PUBLIC")
+	print("world: "..getBot():getWorld().name:upper().." | PUBLIC")
+	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit World Lock``|left|242|") then
+	print("world: "..getBot():getWorld().name:upper().." wrench world_lock public")
+	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit Small Lock``|left|202|") then
+	print("world: "..getBot():getWorld().name:upper().." wrench smail Lock")
+	elseif variant:get(0):getString() == "OnDialogRequest" and variant:get(1):getString():find("`wEdit Door``|left|12|") then
+	print("world: "..getBot():getWorld().name:upper().." wrench door")
+	elseif variant:get(0):getString() == "OnConsoleMessage" and variant:get(1):getString():find("Oops, you've created too many worlds today.  Try again tomorrow!") then
+	print("Oops, you've created too many worlds today.  Try again tomorrow!")
+	Join_WorldBolean=false
+	mulai=false
+	else
+	save(variant:get(0):getString().." 1: "..variant:get(1):getString(), "buildflock")
+	end
+end)
+
+function findBlockid(id)
+  for _, tile in pairs(getBot():getWorld():getTiles()) do
+    if tile.fg == id then
+	korX=tile.x
+	korY=tile.y
+	break
+	end
+  end
+end
+
+function door_edit(lockx, locky)
+getBot():wrench(lockx,locky)
+listenEvents(2)
+getBot():sendPacket(2, "action|dialog_return\ndialog_name|door_edit\ntilex|"..lockx.."|\ntiley|"..locky.."|\ndoor_name|mm\ndoor_target|\ndoor_id|"..id_Door.."\ncheckbox_locked|0")
+listenEvents(2)
+end
+function edit_hl(lockx, locky)
+getBot():wrench(lockx,locky)
+listenEvents(2)
+getBot():sendPacket(2, "action|dialog_return\ndialog_name|lock_edit\ntilex|"..lockx.."|\ntiley|"..locky.."|\nbuttonClicked|recalcLock\n\ncheckbox_public|0\ncheckbox_ignore|1")
+listenEvents(2)
+end
+function world_public(lockx, locky)
+getBot():wrench(lockx,locky)
+listenEvents(2)
+getBot():sendPacket(2, "action|dialog_return\ndialog_name|lock_edit\ntilex|"..lockx.."|\ntiley|"..locky.."|\ncheckbox_public|1\ncheckbox_disable_music|0\ntempo|100\ncheckbox_disable_music_render|0\ncheckbox_set_as_home_world|0\nminimum_entry_level|"..math.random(1, 6))
+listenEvents(3)
+end
+
+function put(x,y,id)
+while getBot().status == 1 and getTile(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y).fg == 0 and getBot():getInventory():findItem(id) ~= 0 do
+	getBot():place(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y, id)
+	sleep(math.random(120,200))
+end
+end
+
+function pukul(x,y)
+	if getTile(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y).fg ~= 0 and getTile(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y).fg ~= 8 then
+	getBot():hit(math.floor(getBot():getWorld():getLocal().posx // 32)+x, math.floor(getBot():getWorld():getLocal().posy // 32)+y)
+	sleep(math.random(150,170))
+	end
+ end
+
+function dropAll(itemID) -- id block
+getBot().auto_collect = false
+	for i, item in pairs(getBot():getInventory():getItems()) do
+		if item.id == 370 or item.id == 8850 or item.id == 1510 or item.id == 12498 or item.id == 882 or item.id == 1486 or item.id == 18 or item.id == 32 or item.id == 98 or item.id == itemID or item.id == itemID+1 then
+		else
+			while getBot():getInventory():findItem(item.id) ~= 0 do
+				getBot():drop(item.id, getBot():getInventory():findItem(item.id))
+				sleep(1100)
+				stuck()
+				if getBot():getInventory():findItem(item.id) ~= 0 then
+				getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)-1, math.floor(getBot():getWorld():getLocal().posy // 32))
+				sleep(500)
+				end
+			end
+		end
+	end
+end
+function dropS(id, x)
+if getBot():getInventory():findItem(id) ~= 0 then
+	while getBot():getInventory():findItem(id) > x and getBot().status == BotStatus.online do
+	getBot():drop(id, getBot():getInventory():findItem(id)-x)
+	sleep(1100)
+		if getBot():getInventory():findItem(id) > x then
+		getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)-1, math.floor(getBot():getWorld():getLocal().posy // 32))
+		sleep(math.random(250, 500))
+		end
+	end
+end
+end
+function go_find(id) -- find floating
+ulangFind=0
+for _, obj in pairs(getBot():getWorld():getObjects()) do
+  if obj.id == id and getInfo(getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg).collision_type == 0 then
+    getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32))
+	sleep(250)
+    getBot():collectObject(obj.oid,3)
+    sleep(500)
+	ulangFind=ulangFind+1
+	if gscan(id) == 0 or ulangFind > 5 or getBot():getInventory():findItem(id) >= 190 then
+		break
+	end
+  end
+end
+end
+
+function gscan(ids)
+    if getBot().status == 1 and getBot():getWorld().name ~= "EXIT" then
+        gs = 0
+        for _, obj in pairs(getBot():getWorld():getObjects()) do
+            if obj.id == ids then
+                gs = gs + obj.count
+            end
+        end
+        return gs
+    end
+end
+
+world_save = "BUYSTOCKBAN"
+signal_jammer=226
+block = 7164 
+id_Door = "b15m1ll4h"
+Door_id = 12 --886
+small_lock = 202
+world_lock = 242
+
+function TakeBahan()
+Join_World(world_save)
+stuck()
+go_find(world_lock)
+dropS(world_lock, 21)
+go_find(signal_jammer)
+dropS(signal_jammer,21)
+go_find(small_lock)
+dropS(small_lock,(getBot():getInventory():findItem(world_lock)*2))
+go_find(block)
+dropS(block, (getBot():getInventory():findItem(world_lock)*6))
+go_find(Door_id)
+dropS(Door_id, 21)
+end
+
+function setRotasi()
+	Join_World(iniRid(9))
+	-- Join_World("DONATERN693")
+	if Join_WorldBolean then
+		put(-1,0,block)
+		put(1,0,signal_jammer)
+		pukul(1,0)
+		put(-1,-1,block)
+		put(0,-1,small_lock)
+		put(1,-1,block)
+		put(2,-1,block)
+		put(-2,-1,block)
+		findBlockid(small_lock)
+		-- print("korX:"..korX.."  |korY:"..korY)
+		edit_hl(korX, korY)
+		getBot():findPath(3,0)
+		sleep(500)
+		put(0, 0, Door_id)
+		findBlockid(Door_id)
+		-- print("korX:"..korX.."  |korY:"..korY)
+		door_edit(korX, korY)
+		getBot():say("/respawn")
+		sleep(2500)
+		getBot():sendPacket(3, "action|join_request\nname|"..getBot():getWorld().name.."|"..id_Door.."\ninvitedWorld|0")
+		sleep(2000)
+		if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 6 then
+		print(getBot().name.." | masih di white door")
+		else
+		print(getBot().name.." | done id_Door")
+		end
+		if getBot():getInventory():findItem(9640) == 1 then
+		put(-1,0,9640)
+		stuck()
+		findBlockid(9640)
+		else
+		put(-1,0,world_lock)
+		stuck()
+		findBlockid(world_lock)
+		end
+		print("korX:"..korX.."  |korY:"..korY)
+		world_public(korX, korY)
+		put(1,0,small_lock)
+		findBlockid(small_lock)
+		-- print("korX:"..korX.."  |korY:"..korY)
+		edit_hl(korX, korY)
+		else
+		Join_World(world_save)
+		stuck()
+		dropAll(0)
+	end
+	if Join_WorldBolean == false or getBot():getInventory():findItem(signal_jammer) == 0 or getBot():getInventory():findItem(Door_id) == 0 or getBot():getInventory():findItem(small_lock) < 2 or getBot():getInventory():findItem(world_lock) == 0 or getBot():getInventory():findItem(block) < 6 then
+	Join_World(world_save)
+	stuck()
+	dropAll(0)
+	mulai=false
+	end
+end
+function goMain()
+mulai=true
+	while mulai do
+	setRotasi()
+		if Join_WorldBolean == false or getBot():getInventory():findItem(signal_jammer) == 0 or getBot():getInventory():findItem(Door_id) == 0 or getBot():getInventory():findItem(small_lock) < 2 or getBot():getInventory():findItem(world_lock) == 0 or getBot():getInventory():findItem(block) < 6 then
+			Join_World(world_save)
+			stuck()
+			dropAll(0)
+			break
+		end
+	end
+end
+TakeBahan()
+-- goMain()
+setRotasi()
+Join_World(world_save)
+stuck()
+dropAll(0)
