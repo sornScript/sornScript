@@ -662,9 +662,9 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV4")
+print(getBot().name.." AGUSTUS questV5")
 function tutorialQuestLevel6()
-if getBot().level <= 5 then
+if getBot().level <= 6 then
 step1()
 step2()
 if getBot().level <= 17 then
@@ -674,7 +674,6 @@ elseif Pick_a_new_quest == false and getBot().level < 17 then
   if (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) or (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1)then
   else
   quest_Join_World("k6yw")
-  print(getBot().name.." | DONE")
   end
   step1()
   step2()
