@@ -291,7 +291,7 @@ end
 end
 
 function quest_Join_World(worldRotasi)
-andomWorld_20=true
+randomWorld_20=true
   while getBot():getWorld().name:upper() ~= worldRotasi:upper() and getBot().status == BotStatus.online and randomWorld_20 do
 	getBot():warp(worldRotasi, "b15m1ll4h")
 	listenEvents(math.random(5,8))
@@ -662,7 +662,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV3")
+print(getBot().name.." AGUSTUS questV4")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
