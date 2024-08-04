@@ -662,19 +662,19 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV2")
+print(getBot().name.." AGUSTUS questV3")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
 step2()
-if getBot().level <= 5 then
+if getBot().level <= 17 then
 return tutorialQuestLevel6()
 end
 elseif Pick_a_new_quest == false and getBot().level < 17 then
   if (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) or (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1)then
   else
-  getBot():warp("START")
-  sleep(10000)
+  quest_Join_World("k6yw")
+  print(getBot().name.." | DONE")
   end
   step1()
   step2()
@@ -686,8 +686,7 @@ if Pick_a_new_quest then
 	print(getBot().name.." Pick_a_new_quest DONE true")
 	if getBot():getInventory():findItem(98) == 0 and quest_wear_hand() ~= 98 then
 	print(getBot().name.." TAKE pickAxe")
-	  getBot():warp(worldPickAxe[math.random(1, #worldPickAxe)],"b15m1ll4h")
-	  sleep(10000)
+	  quest_Join_World(worldPickAxe[math.random(1, #worldPickAxe)])
 	  quest_stuck()
 	  ulangFind=0
 	  quest_go_find(98)
@@ -717,5 +716,5 @@ getLink("https://raw.githubusercontent.com/sornScript/sornScript/main/fristWLBui
 else
 print(getBot().name.." | place "..getInfo(9640).name)
 quest_Join_World(quest_iniRid(12))
-quest_put(1,0,9640)
+quest_put(1,0, 9640)
 end
