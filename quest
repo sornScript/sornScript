@@ -662,7 +662,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." 28 JUL questV1")
+print(getBot().name.." AGUSTUS questV1")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 step1()
@@ -671,10 +671,9 @@ if getBot().level <= 5 then
 return tutorialQuestLevel6()
 end
 elseif Pick_a_new_quest == false and getBot().level < 17 then
-  if (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) then
-  
+  if (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) or (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1)then
   else
-  getBot():warp("k6yw")
+  getBot():warp("START")
   sleep(10000)
   end
   step1()
