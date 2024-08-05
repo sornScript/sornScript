@@ -662,9 +662,10 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV7")
+print(getBot().name.." AGUSTUS questV8")
 function tutorialQuestLevel6()
-if getBot().level <= 6 and getBot():getWorld().name:upper() ~= "EXIT" then
+if getBot().level <= 6 then
+	if getBot():getWorld().name:upper() == "EXIT" then  quest_Join_World("k6yw")  end
 step1()
 step2()
 if getBot().level <= 10 then
