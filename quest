@@ -358,7 +358,7 @@ end
  function questTrash()
  id_Trash={14, 2, 4, 100,3,5,15,2914, 101, 20, 21, 10, 11}
     for _,item_id_Trash in pairs(id_Trash) do
-		if getBot():getInventory():findItem(item_id_Trash) ~= 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
+		if getBot():getInventory():findItem(item_id_Trash) > 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
 			getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
 			getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
 			sleep(1250)
@@ -369,10 +369,10 @@ end
  function done_trash()
  id_Trash={2, 20, 2914, 5024, 5028, 370}
     for _,item_id_Trash in pairs(id_Trash) do
-		if getBot():getInventory():findItem(item_id_Trash) ~= 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
+		if getBot():getInventory():findItem(item_id_Trash) > 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
 			getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
 			getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
-			sleep(1250)
+			sleep(500)
 		end
 	end
  end
@@ -662,13 +662,13 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV8")
+print(getBot().name.." AGUSTUS questV9")
 function tutorialQuestLevel6()
-if getBot().level <= 6 then
+if getBot().level <= 5 then
 	if getBot():getWorld().name:upper() == "EXIT" then  quest_Join_World("k6yw")  end
 step1()
 step2()
-if getBot().level <= 10 then
+if getBot().level <= 6 then
 return tutorialQuestLevel6()
 end
 elseif Pick_a_new_quest == false and getBot().level < 6 then
