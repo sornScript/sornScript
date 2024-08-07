@@ -179,7 +179,7 @@ function TakeBahan()
 build_Join_World(world_save)
 build_stuck()
 build_go_find(signal_jammer)
-build_dropS(signal_jammer,getBot():getInventory():findItem(world_lock))
+build_dropS(signal_jammer, getBot():getInventory():findItem(world_lock))
 build_go_find(small_lock)
 build_dropS(small_lock,(getBot():getInventory():findItem(world_lock)*2))
 build_go_find(block)
@@ -191,7 +191,7 @@ end
 function setRotasi()
 	build_Join_World(iniRid(9))
 	-- build_Join_World("DONATERN693")
-	if build_Join_WorldBolean then
+	if build_Join_WorldBolean and getBot():getInventory():findItem(signal_jammer) >= 1 and getBot():getInventory():findItem(block) >= 6 and getBot():getInventory():findItem(build_Door_id) >= 1 and getBot():getInventory():findItem(small_lock) >= 1 then
 		build_put(-1,0,block)
 		build_put(1,0,signal_jammer)
 		build_pukul(1,0)
