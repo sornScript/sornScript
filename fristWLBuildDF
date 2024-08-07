@@ -234,6 +234,7 @@ function setRotasi()
 		-- print("korX:"..korX.."  |korY:"..korY)
 		edit_hl(korX, korY)
 		else
+		build_Join_World(world_save)
 		build_stuck()
 		kordinatDrop()
 		build_dropS(signal_jammer, 0)
