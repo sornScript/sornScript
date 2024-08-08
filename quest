@@ -71,13 +71,13 @@ function quest_harvestPickAxe(id)
 end
 
 function quest_harvestALL()
-  for _, tile in pairs(getBot():getWorld():getTiles()) do
-    if (tile.fg == 3 or tile.fg == 5 or tile.fg == 11 or tile.fg == 15  or tile.fg == 21 or tile.fg == 101 or tile.fg == 371) and getTile(tile.x,tile.y):canHarvest() and getBot().status == BotStatus.online then
-      getBot():findPath(tile.x,tile.y)
-	  getBot():hit(tile.x,tile.y)
-	  sleep(200)
-	end
-  end
+  -- for _, tile in pairs(getBot():getWorld():getTiles()) do
+    -- if (tile.fg == 3 or tile.fg == 5 or tile.fg == 11 or tile.fg == 15  or tile.fg == 21 or tile.fg == 101 or tile.fg == 371) and getTile(tile.x,tile.y):canHarvest() and getBot().status == BotStatus.online then
+      -- getBot():findPath(tile.x,tile.y)
+	  -- getBot():hit(tile.x,tile.y)
+	  -- sleep(200)
+	-- end
+  -- end
 end
 
 function breakWood(id)
@@ -100,7 +100,7 @@ end
 
 function findTrees(id)
   for _, tile in pairs(getBot():getWorld():getTiles()) do
-	if tile.fg == id and getBot().status == BotStatus.online then
+	if not getTile(tile.x,tile.y):canHarvest() and tile.fg == id and getBot().status == BotStatus.online then
 		if id == 202 then
 		getBot():findPath(tile.x,tile.y-1)
 		sleep(2500)
@@ -189,10 +189,10 @@ for _, obj in pairs(getBot():getWorld():getObjects()) do
 	-- print(getBot().name.." quest_go_find : "..getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg)
 	if getTile(math.floor(obj.x//32), math.floor(obj.y//32)).fg == 2 then
     getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32)-1)
-	sleep(250)
+	sleep(2000)
 	else
     getBot():findPath(math.floor(obj.x//32), math.floor(obj.y//32))
-	sleep(250)
+	sleep(2000)
 	end
     getBot():collectObject(obj.oid,3)
     sleep(500)
@@ -212,7 +212,7 @@ end
 	fossilX = tile.x
 	fossilY = tile.y
 	  getBot():findPath(fossilX, fossilY+1)
-      sleep(250)
+      sleep(500)
 	  break
 	end
   end
@@ -265,7 +265,7 @@ if getBot():getInventory():findItem(id) ~= 0 then
 	sleep(1100)
 		if getBot():getInventory():findItem(id) > x then
 		getBot():findPath(math.floor(getBot():getWorld():getLocal().posx // 32)-1, math.floor(getBot():getWorld():getLocal().posy // 32))
-		sleep(math.random(250, 500))
+		sleep(500)
 		end
 	end
 end
@@ -356,25 +356,25 @@ return w
 end
 
  function questTrash()
- id_Trash={14, 2, 4, 100,3,5,15,2914, 101, 20, 21, 10, 11}
-    for _,item_id_Trash in pairs(id_Trash) do
-		if getBot():getInventory():findItem(item_id_Trash) > 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
-			getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
-			getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
-			sleep(1250)
-		end
-	end
+ -- id_Trash={14, 2, 4, 100,3,5,15,2914, 101, 20, 21, 10, 11}
+    -- for _,item_id_Trash in pairs(id_Trash) do
+		-- if getBot():getInventory():findItem(item_id_Trash) > 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
+			-- getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
+			-- getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
+			-- sleep(1250)
+		-- end
+	-- end
  end
 
  function done_trash()
- id_Trash={2, 20, 2914, 5024, 5028, 370}
-    for _,item_id_Trash in pairs(id_Trash) do
-		if getBot():getInventory():findItem(item_id_Trash) > 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
-			getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
-			getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
-			sleep(500)
-		end
-	end
+ -- id_Trash={2, 20, 2914, 5024, 5028, 370}
+    -- for _,item_id_Trash in pairs(id_Trash) do
+		-- if getBot():getInventory():findItem(item_id_Trash) > 0 and getBot():getWorld().name:upper() ~= "EXIT" and getBot().status == BotStatus.online then
+			-- getBot():sendPacket(2, "action|trash\n|itemID|".. item_id_Trash)
+			-- getBot():sendPacket(2, "action|dialog_return\ndialog_name|trash_item\nitemID|".. item_id_Trash .."|\ncount|" .. getBot():getInventory():findItem(item_id_Trash))
+			-- sleep(500)
+		-- end
+	-- end
  end
 
 function fristMyWorldLock(id)
@@ -514,7 +514,7 @@ ulangFind=0
 xdropx(11)
 quest_go_find(11)
 print(getBot().name.." rock : "..getBot():getInventory():findItem(11))
-while getBot():getInventory():findItem(11) <=2 and getBot().status == BotStatus.online do
+while getBot():getInventory():findItem(11) <=1 and getBot().status == BotStatus.online do
 findBlock(10)
 if fossilY ~= math.floor(getBot():getWorld():getLocal().posy // 32) then  getBot():findPath(0, fossilY)  sleep(250)  end
 otw_block(10, 3)
@@ -662,7 +662,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV9")
+print(getBot().name.." AGUSTUS questV10")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 	if getBot():getWorld().name:upper() == "EXIT" then  quest_Join_World("k6yw")  end
