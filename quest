@@ -1,6 +1,6 @@
 -- [quest new bot] --
 clearConsole()
-world_bahanQuest = "buystockban"
+world_bahanQuest = "BUYSTOCKBANDFSEED"
 world_Try_again_tomorrow ={"RNDONATE741",
 "118DJJSKWOWP0A","3362728MM","01927337HSHSJ",
 }
