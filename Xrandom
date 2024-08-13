@@ -83,7 +83,7 @@ id_Trash= {2,3,4,5,14,15, 5028, 5038, 5040, 8846, 8694, 8695, 5026, 5024, 5034,2
 --[auto buy pack]--
 -- "signal_jammer"
 JenisPack = "world_lock" -- "ssp_10_pack"
-count_save_gems= 20000
+count_save_gems= 200000
 HargaPack = 2000
 
 --[proxy data]--
