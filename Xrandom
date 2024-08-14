@@ -1,1 +1,93 @@
+--[SaveBotLevel]--
+SaveBotLevel = 125
+GiveRate = false 
+randomWorld = 5
+typeLevelingGuest = false -- true jika mau save guest level 10 only
+
+dropSBlock= false -- true[drop block soil] / false[drop seed soil]
+WorldSaveVendSoil= "THGAHL814"
+
+-- [onlySoil] --
+WorldSaveVendSoil_new = {
+"THGAHL814",
+}
+-- [other] --
+ElseWorldSave_new = {
+-- "RNDONATE693","RNDONATE741","118DJJSKWOWP0A","3362728MM",
+"01927337HSHSJ",
+
+}
+
+DropOtherWorld_inVend= true
+WorldSaveGrinder = {
+"TZQKOA1998","TZQKOAQWER","TZQKOAPOIU",
+
+}
+-- [SpecialEvent HarvestVest/Alien] --
+buyAndWearSpecialEvent_Boolean = false
+Dbug_SpecialEvent = "nodebuk"
+price_SpecialEvent = 5000
+itenID_SpecialEvent = 0
+
+-- [item id yang no drop] --
+endNodropid={itenID_SpecialEvent, 18, 32, 9640, 98, 8850, 1510, 12498, 1486, 10158, 6336
+
+}
+---------------------------
+
+Add_VendingDropSeed = true
+loopingFlour = 1
+loopingSugar = 1
+
+WorldSaveVendFlour= "BLOCKTE110Z"
+WorldSaveVendSugar= "BLOCKTE110Z"
+
+goWorldSTART = true
+goWorldSTART_Name = "DLS" 
+ElseWorldSave = "RNDONATE693" --novend
+WorldSaveVendBlockWarna= "BDJWI1"
+WorldSaveVendDark_block= "FERTILEF"
+
+
+World_WheatUpLevel = {
+"RLRKWV",
+"LFTSRP",
+"OVCQF",
+"TVTUTSE",
+"QAZQK",
+"SMLQF",
+"NKZQR",
+"NKZQJ",
+"SQGQJ",
+"MVHIB",
+"KHQXW",
+"HFPJF",
+"XHWQK",
+"VFDDE",
+"ZUPXLHN"
+} -- world wheat 
+
+World_save_Pack = {
+"BUYSTOCKBAN",
+"UEUWIHXJJZQ","NOPHAJHJWN","UEUWIHXJJZW","XLISTWAR","26aprssp1","buyperdays",
+
+}
+
+-- "QDHQ", WQQC "NFJI",
+
+--[trash]--
+id_Trash= {2,3,4,5,14,15, 5028, 5038, 5040, 8846, 8694, 8695, 5026, 5024, 5034,2914
+
+}
+
+--[auto buy pack]--
+-- "signal_jammer"
+JenisPack = "world_lock" -- "ssp_10_pack"
+count_save_gems= 2000000
+HargaPack = 2000
+
+--[proxy data]--
+proxy_data = {
+"p.webshare.io:80:pxlvnimr-rotate:73lini3pgwv6"
+}
 
