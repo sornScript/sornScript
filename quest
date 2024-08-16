@@ -251,8 +251,38 @@ sleep(5000)
 end
 end
 
+function ceking_droper(countDrop)
+    if getBot().status == 1 and getBot():getWorld().name ~= "EXIT" then
+        gs = 0
+        for _, obj in pairs(getBot():getWorld():getObjects()) do
+		local droperX=math.floor(obj.x//32) 
+		local droperY=math.floor(obj.y//32)
+			if math.floor(getBot():getWorld():getLocal().posy // 32) == droperY and (math.floor(getBot():getWorld():getLocal().posx // 32)-countDrop) == droperX then
+                gs = gs + obj.count
+				-- print(droperX.." | "..droperY)
+            end
+        end
+        return gs
+    end
+end
+
+function kordinatDrop()
+	countDrop=0
+		while true do
+			if ceking_droper(countDrop) >= 3000 then
+				countDrop=countDrop+1
+			else
+				break
+			end
+		end
+		getBot():findPath( math.floor(getBot():getWorld():getLocal().posx // 32)-countDrop, math.floor(getBot():getWorld():getLocal().posy // 32))
+		sleep(500)
+end
+
+
 function dropS(id, x)
 if getBot():getInventory():findItem(id) ~= 0 then
+kordinatDrop()
 	while getBot():getInventory():findItem(id) > x and getBot().status == BotStatus.online do
 	getBot():drop(id, getBot():getInventory():findItem(id)-x)
 	sleep(1100)
@@ -538,9 +568,12 @@ end
  sleep(5000)
  if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 20 then
  getBot():wrench(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32))
- sleep(3000)
- getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
- sleep(5000)
+ sleep(3500)
+	if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)):getExtra().label == "" then
+	 print(getBot().name.." | manual sign")
+	 getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
+	 listenEvents(4)
+	end
  end
  ------
  done_trash()
