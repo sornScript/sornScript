@@ -577,6 +577,7 @@ splice(5, 3)
 splice(5, 3)
 findTrees(101)
 tungguReadyHarvest()
+sleep(20000)
 quest_harvest(101)
 quest_harvest(101)
 quest_harvest(101)
@@ -659,7 +660,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV11")
+print(getBot().name.." AGUSTUS questV12")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 	if getBot():getWorld().name:upper() == "EXIT" then  quest_Join_World("k6yw")  end
