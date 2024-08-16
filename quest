@@ -705,7 +705,7 @@ local response = httpResult.body
 load(response)()
 end
 if getBot():getInventory():findItem(9640) >= 1 and typeLeveling == false then
-getLink("https://raw.githubusercontent.com/sornScript/sornScript/main/fristWLBuildDF")
+-- getLink("https://raw.githubusercontent.com/sornScript/sornScript/main/fristWLBuildDF")
 elseif getBot():getInventory():findItem(9640) >= 1 then
 print(getBot().name.." | place "..getInfo(9640).name)
 quest_Join_World(quest_iniRid(12))
