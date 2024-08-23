@@ -1,5 +1,5 @@
 --[SaveBotLevel]--
-SaveBotLevel = 15
+SaveBotLevel = 17
 GiveRate = false 
 randomWorld = 5
 typeLevelingGuest = false -- true jika mau save guest level 10 only
