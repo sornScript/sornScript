@@ -696,7 +696,7 @@ end
 print(getBot().name.." AGUSTUS questV13")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
-	if getBot():getWorld().name:upper() == "EXIT" then  quest_Join_World("k6yw")  end
+	if getBot():getWorld().name:upper() == "EXIT" then  getBot():warp("K6YW") sleep(10000)  end
 step1()
 step2()
 if getBot().level <= 5 and getBot().status == BotStatus.online then
@@ -705,7 +705,7 @@ end
 elseif Pick_a_new_quest == false and getBot().level < 7 then
   if (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) or (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1)then
   else
-  quest_Join_World("k6yw")
+  getBot():warp("K6YW") sleep(10000)
   end
   step1()
   step2()
