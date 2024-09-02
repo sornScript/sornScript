@@ -733,10 +733,10 @@ if Pick_a_new_quest then
 		end
 		print(getBot().name.." TAKE pickAxe : "..quest_wear_hand())
 		dropS(98, 1)
-		getBot():trash(370, getBot():getInventory():findItem(370))
-		sleep(250)
-		getBot():setSkin(math.random(4, 6))
-		sleep(2000)
+		--getBot():trash(370, getBot():getInventory():findItem(370))
+		--sleep(250)
+		--getBot():setSkin(math.random(4, 6))
+		--sleep(2000)
 	end
 end
 end
