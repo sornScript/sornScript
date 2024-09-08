@@ -693,7 +693,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV14")
+print(getBot().name.." AGUSTUS questV15")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 	if getBot():getWorld().name:upper() == "EXIT" and getBot().level > 1 then  getBot():warp("K6YW") sleep(10000)
@@ -721,22 +721,22 @@ if Pick_a_new_quest then
 	print(getBot().name.." Pick_a_new_quest DONE true")
 	if getBot():getInventory():findItem(98) == 0 and quest_wear_hand() ~= 98 then
 	print(getBot().name.." TAKE pickAxe")
-	  quest_Join_World(worldPickAxe[math.random(1, #worldPickAxe)])
-	  quest_stuck()
-	  ulangFind=0
-	  quest_go_find(98)
-	  dropS(98, 1)
-	  quest_harvestPickAxe(99)
-		while quest_wear_hand() ~= 98 and getBot():getInventory():findItem(98) >= 1 do
-			getBot():wear(98)
-			sleep(1150)
+	pickAxe=worldPickAxe[math.random(1, #worldPickAxe)]
+	  getBot():warp(pickAxe)
+	  sleep(20000)
+	  if pickAxe:upper() == getBot():getWorld().name:upper() then
+		  quest_stuck()
+		  ulangFind=0
+		  quest_go_find(98)
+		  dropS(98, 1)
+		  quest_harvestPickAxe(99)
+			while quest_wear_hand() ~= 98 and getBot():getInventory():findItem(98) >= 1 do
+				getBot():wear(98)
+				sleep(1150)
+			end
+			print(getBot().name.." TAKE pickAxe : "..quest_wear_hand())
+			dropS(98, 1)
 		end
-		print(getBot().name.." TAKE pickAxe : "..quest_wear_hand())
-		dropS(98, 1)
-		--getBot():trash(370, getBot():getInventory():findItem(370))
-		--sleep(250)
-		--getBot():setSkin(math.random(4, 6))
-		--sleep(2000)
 	end
 end
 end
