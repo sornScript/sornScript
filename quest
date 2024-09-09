@@ -569,11 +569,11 @@ end
  if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 20 then
  getBot():wrench(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32))
  sleep(5000)
-	if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)):getExtra().label == "" then
+	-- if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)):getExtra().label == "" then
 	 print(getBot().name.." | manual sign")
 	 getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
 	 listenEvents(4)
-	end
+	-- end
  end
  ------
  done_trash()
