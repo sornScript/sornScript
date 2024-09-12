@@ -36,7 +36,7 @@ endNodropid={itenID_SpecialEvent, 18, 32, 9640, 98, 8850, 1510, 12498, 1486, 101
 ---------------------------
 
 Add_VendingDropSeed = true
-loopingFlour = 2
+loopingFlour = 5
 loopingSugar = 1
 
 WorldSaveVendFlour= "BLOCKTE110Z"
