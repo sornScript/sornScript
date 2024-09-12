@@ -428,7 +428,32 @@ if getLocal() then
 end
 return countCloth;
 end
+function ceking_droper(countDrop)
+    if getBot().status == 1 and getBot():getWorld().name ~= "EXIT" then
+        gs = 0
+        for _, obj in pairs(getBot():getWorld():getObjects()) do
+		local droperX=math.floor(obj.x//32) 
+		local droperY=math.floor(obj.y//32)
+			if math.floor(getBot():getWorld():getLocal().posy // 32) == droperY and (math.floor(getBot():getWorld():getLocal().posx // 32)-countDrop) == droperX then
+                gs = gs + obj.count
+            end
+        end
+        return gs
+    end
+end
 
+function kordinatDrop_quest()
+	countDrop=1
+		while true do
+			if ceking_droper(countDrop) >= 2000 then
+				countDrop=countDrop+1
+			else
+				break
+			end
+		end
+		getBot():findPath( math.floor(getBot():getWorld():getLocal().posx // 32)-countDrop, math.floor(getBot():getWorld():getLocal().posy // 32))
+		sleep(500)
+end
 
 
 function step1()
@@ -453,7 +478,8 @@ function step1()
 	quest_go_find(5) -- lava
 	quest_go_find(3) -- lava
 	getBot():findPath(98,2)
-	sleep(250)
+	sleep(2500)
+	kordinatDrop_quest()
 	dropS(5036, 2)
 	dropS(5, 3)
 	dropS(11, 2)
@@ -695,7 +721,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV16")
+print(getBot().name.." AGUSTUS questV17")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 	if getBot():getWorld().name:upper() == "EXIT" and getBot().level > 1 then  getBot():warp("K6YW") sleep(10000)
