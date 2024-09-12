@@ -24,10 +24,10 @@ WorldSaveGrinder = {
 
 }
 -- [SpecialEvent HarvestVest/Alien] --
-buyAndWearSpecialEvent_Boolean = false
-Dbug_SpecialEvent = "nodebuk"
+buyAndWearSpecialEvent_Boolean = true
+Dbug_SpecialEvent = "mooncake_mag"
 price_SpecialEvent = 5000
-itenID_SpecialEvent = 0
+itenID_SpecialEvent = 10158
 
 -- [item id yang no drop] --
 endNodropid={itenID_SpecialEvent, 18, 32, 9640, 98, 8850, 1510, 12498, 1486, 10158, 6336
@@ -83,6 +83,6 @@ id_Trash= {2,3,4,5,14,15, 5028, 5038, 5040, 8846, 8694, 8695, 5026, 5024, 5034,2
 --[auto buy pack]--
 -- "signal_jammer"
 JenisPack = "world_lock" -- "ssp_10_pack"
-count_save_gems= 20000
+count_save_gems= 10000
 HargaPack = 2000
 
