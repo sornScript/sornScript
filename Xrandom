@@ -36,7 +36,7 @@ endNodropid={itenID_SpecialEvent, 18, 32, 9640, 98, 8850, 1510, 12498, 1486, 101
 ---------------------------
 
 Add_VendingDropSeed = true
-loopingFlour = 1
+loopingFlour = 2
 loopingSugar = 1
 
 WorldSaveVendFlour= "BLOCKTE110Z"
@@ -85,9 +85,4 @@ id_Trash= {2,3,4,5,14,15, 5028, 5038, 5040, 8846, 8694, 8695, 5026, 5024, 5034,2
 JenisPack = "world_lock" -- "ssp_10_pack"
 count_save_gems= 50000
 HargaPack = 2000
-
---[proxy data]--
-proxy_data = {
-"p.webshare.io:80:pxlvnimr-rotate:73lini3pgwv6"
-}
 
