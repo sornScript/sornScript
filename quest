@@ -595,11 +595,11 @@ end
  if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)).fg == 20 then
  getBot():wrench(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32))
  sleep(5000)
-	-- if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)):getExtra().label == "" then
+	if getTile(math.floor(getBot():getWorld():getLocal().posx // 32), math.floor(getBot():getWorld():getLocal().posy // 32)):getExtra().label == "" then
 	 print(getBot().name.." | manual sign")
 	 getBot():sendPacket(2, "action|dialog_return\ndialog_name|sign_edit\ntilex|"..math.floor(getBot():getWorld():getLocal().posx // 32).."|\ntiley|"..math.floor(getBot():getWorld():getLocal().posy // 32).."|\nsign_text|quest1")
 	 listenEvents(4)
-	-- end
+	end
  end
  ------
  done_trash()
@@ -734,7 +734,7 @@ step2()
 if getBot().level <= 5 and getBot().status == BotStatus.online then
 return tutorialQuestLevel6()
 end
-elseif Pick_a_new_quest == false and getBot().level < 7 then
+elseif Pick_a_new_quest == false and getBot().level < 16 then
   if (fristMyWorldLock(202) == 1 and fristMyWorldLock(5036) == 2) or (getBot():getWorld().name:upper():find(getBot().name:upper()) and fristMyWorldLock(9640) == 1)then
   else
   getBot():warp("K6YW") sleep(10000)
