@@ -721,7 +721,7 @@ quest_pukul(0,-1)
 end
 end
 
-print(getBot().name.." AGUSTUS questV17")
+print(getBot().name.."| -- [ AGUSTUS questV18 ] --")
 function tutorialQuestLevel6()
 if getBot().level <= 5 then
 	if getBot():getWorld().name:upper() == "EXIT" and getBot().level > 1 then  getBot():warp("K6YW") sleep(10000)
@@ -747,12 +747,13 @@ Pick_a_new_quest=true
 end
 if Pick_a_new_quest then
 	print(getBot().name.." Pick_a_new_quest DONE true")
-	if getBot():getInventory():findItem(98) == 0 and quest_wear_hand() ~= 98 then
+	if getBot():getInventory():findItem(98) == 0 and quest_wear_hand() ~= 98 and take_pickaxeBot then
 	print(getBot().name.." TAKE pickAxe")
 	pickAxe=worldPickAxe[math.random(1, #worldPickAxe)]
 	  getBot():warp(pickAxe)
 	  sleep(20000)
 	  if pickAxe:upper() == getBot():getWorld().name:upper() then
+	  take_pickaxeBot=false
 		  quest_stuck()
 		  ulangFind=0
 		  quest_go_find(98)
