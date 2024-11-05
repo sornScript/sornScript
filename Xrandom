@@ -24,7 +24,7 @@ WorldSaveGrinder = {
 
 }
 -- [SpecialEvent HarvestVest/Alien] --
-buyAndWearSpecialEvent_Boolean = true
+buyAndWearSpecialEvent_Boolean = false
 Dbug_SpecialEvent = "mooncake_mag"
 price_SpecialEvent = 5000
 itenID_SpecialEvent = 10158
